@@ -21,6 +21,12 @@ type volume_unit =
   | Gallon
   | Cup
 
+type pressure_unit = 
+  | Pascal
+  | Bar
+  | PSI
+  | Atmosphere
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -43,6 +49,12 @@ let volume_unit_to_string = function
   | Milliliter -> "milliliters"
   | Gallon -> "gallons"
   | Cup -> "cups"
+
+let pressure_unit_to_string = function
+  | Pascal -> "pascals"
+  | Bar -> "bars"
+  | PSI -> "psi"
+  | Atmosphere -> "atmospheres"
 
 let to_meters = function
   | Meter -> 1.0
@@ -107,4 +119,22 @@ let from_liters v target =
 let convert_volume value from_unit to_unit = 
   let liters = value *. (to_liters from_unit) in
   let (_, result) = from_liters liters to_unit in
+  result
+
+let to_pascals = function
+  | Pascal -> 1.0
+  | Bar -> 100000.0
+  | PSI -> 6894.76
+  | Atmosphere -> 101325.0
+
+let from_pascals v target = 
+  match target with
+  | Pascal -> Pascal, v
+  | Bar -> Bar, (v /. 100000.0)
+  | PSI -> PSI, (v /. 6894.76)
+  | Atmosphere -> Atmosphere, (v /. 101325.0)
+
+let convert_pressure value from_unit to_unit = 
+  let pascals = value *. (to_pascals from_unit) in
+  let (_, result) = from_pascals pascals to_unit in
   result

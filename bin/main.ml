@@ -28,3 +28,11 @@ let () =
   let vol_val2 = 500.0 in
   let vol_res2 = convert_volume vol_val2 Milliliter Cup in
   print_conv vol_val2 Milliliter Cup vol_res2 volume_unit_to_string
+
+  let press_val = 1.0 in
+  let press_res = convert_pressure press_val Atmosphere PSI in
+  print_conv press_val Atmosphere PSI press_res pressure_unit_to_string
+
+  let press_val2 = 101325.0 in
+  let press_res2 = convert_pressure press_val2 Pascal Bar in
+  print_conv press_val2 Pascal Bar press_res2 pressure_unit_to_string
