@@ -33,6 +33,12 @@ type time_unit =
   | Hour
   | Day
 
+type energy_unit = 
+  | Joule
+  | Calorie
+  | WattHour
+  | KilowattHour
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -67,6 +73,12 @@ let time_unit_to_string = function
   | Minute -> "minutes"
   | Hour -> "hours"
   | Day -> "days"
+
+let energy_unit_to_string = function
+  | Joule -> "joules"
+  | Calorie -> "calories"
+  | WattHour -> "watt-hours"
+  | KilowattHour -> "kilowatt-hours"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -128,3 +140,12 @@ let to_seconds = function
 
 let convert_time value from_unit to_unit = 
   convert_linear value from_unit to_unit to_seconds to_seconds
+
+let to_joules = function
+  | Joule -> 1.0
+  | Calorie -> 4.184
+  | WattHour -> 3600.0
+  | KilowattHour -> 3600000.0
+
+let convert_energy value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_joules to_joules

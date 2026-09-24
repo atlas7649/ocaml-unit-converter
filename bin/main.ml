@@ -44,3 +44,11 @@ let () =
   let time_val2 = 120.0 in
   let time_res2 = convert_time time_val2 Minute Hour in
   print_conv time_val2 Minute Hour time_res2 time_unit_to_string
+
+  let energy_val = 1.0 in
+  let energy_res = convert_energy energy_val KilowattHour Joule in
+  print_conv energy_val KilowattHour Joule energy_res energy_unit_to_string
+
+  let energy_val2 = 1000.0 in
+  let energy_res2 = convert_energy energy_val2 Calorie WattHour in
+  print_conv energy_val2 Calorie WattHour energy_res2 energy_unit_to_string
