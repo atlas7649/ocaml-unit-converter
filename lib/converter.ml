@@ -68,23 +68,19 @@ let time_unit_to_string = function
   | Hour -> "hours"
   | Day -> "days"
 
+(* Generic helper for linear conversions *)
+let convert_linear value from_unit to_unit to_base from_base = 
+  let base_val = value *. (to_base from_unit) in
+  base_val /. (to_base to_unit)
+
 let to_meters = function
   | Meter -> 1.0
   | Kilometer -> 1000.0
   | Foot -> 0.3048
   | Mile -> 1609.34
 
-let from_meters v target = 
-  match target with
-  | Meter -> Meter, v
-  | Kilometer -> Kilometer, (v /. 1000.0)
-  | Foot -> Foot, (v /. 0.3048)
-  | Mile -> Mile, (v /. 1609.34)
-
 let convert_length value from_unit to_unit = 
-  let meters = value *. (to_meters from_unit) in
-  let (unit, result) = from_meters meters to_unit in
-  result
+  convert_linear value from_unit to_unit to_meters to_meters
 
 let convert_temp value from_unit to_unit = 
   let kelvin = match from_unit with
@@ -103,17 +99,8 @@ let to_grams = function
   | Pound -> 453.592
   | Ounce -> 28.3495
 
-let from_grams v target = 
-  match target with
-  | Gram -> Gram, v
-  | Kilogram -> Kilogram, (v /. 1000.0)
-  | Pound -> Pound, (v /. 453.592)
-  | Ounce -> Ounce, (v /. 28.3495)
-
 let convert_mass value from_unit to_unit = 
-  let grams = value *. (to_grams from_unit) in
-  let (_, result) = from_grams grams to_unit in
-  result
+  convert_linear value from_unit to_unit to_grams to_grams
 
 let to_liters = function
   | Liter -> 1.0
@@ -121,17 +108,8 @@ let to_liters = function
   | Gallon -> 3.78541
   | Cup -> 0.236588
 
-let from_liters v target = 
-  match target with
-  | Liter -> Liter, v
-  | Milliliter -> Milliliter, (v /. 0.001)
-  | Gallon -> Gallon, (v /. 3.78541)
-  | Cup -> Cup, (v /. 0.236588)
-
 let convert_volume value from_unit to_unit = 
-  let liters = value *. (to_liters from_unit) in
-  let (_, result) = from_liters liters to_unit in
-  result
+  convert_linear value from_unit to_unit to_liters to_liters
 
 let to_pascals = function
   | Pascal -> 1.0
@@ -139,17 +117,8 @@ let to_pascals = function
   | PSI -> 6894.76
   | Atmosphere -> 101325.0
 
-let from_pascals v target = 
-  match target with
-  | Pascal -> Pascal, v
-  | Bar -> Bar, (v /. 100000.0)
-  | PSI -> PSI, (v /. 6894.76)
-  | Atmosphere -> Atmosphere, (v /. 101325.0)
-
 let convert_pressure value from_unit to_unit = 
-  let pascals = value *. (to_pascals from_unit) in
-  let (_, result) = from_pascals pascals to_unit in
-  result
+  convert_linear value from_unit to_unit to_pascals to_pascals
 
 let to_seconds = function
   | Second -> 1.0
@@ -157,14 +126,5 @@ let to_seconds = function
   | Hour -> 3600.0
   | Day -> 86400.0
 
-let from_seconds v target = 
-  match target with
-  | Second -> Second, v
-  | Minute -> Minute, (v /. 60.0)
-  | Hour -> Hour, (v /. 3600.0)
-  | Day -> Day, (v /. 86400.0)
-
 let convert_time value from_unit to_unit = 
-  let seconds = value *. (to_seconds from_unit) in
-  let (_, result) = from_seconds seconds to_unit in
-  result
+  convert_linear value from_unit to_unit to_seconds to_seconds
