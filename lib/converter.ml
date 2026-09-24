@@ -15,6 +15,23 @@ type mass_unit =
   | Pound
   | Ounce
 
+let length_unit_to_string = function
+  | Meter -> "meters"
+  | Kilometer -> "kilometers"
+  | Foot -> "feet"
+  | Mile -> "miles"
+
+let temp_unit_to_string = function
+  | Celsius -> "Celsius"
+  | Fahrenheit -> "Fahrenheit"
+  | Kelvin -> "Kelvin"
+
+let mass_unit_to_string = function
+  | Gram -> "grams"
+  | Kilogram -> "kilograms"
+  | Pound -> "pounds"
+  | Ounce -> "ounces"
+
 let to_meters = function
   | Meter -> 1.0
   | Kilometer -> 1000.0
