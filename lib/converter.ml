@@ -6,6 +6,10 @@ type unit =
   | Celsius of float
   | Fahrenheit of float
   | Kelvin of float
+  | Gram of float
+  | Kilogram of float
+  | Pound of float
+  | Ounce of float
 
 let to_meters = function
   | Meter v -> v
@@ -38,3 +42,22 @@ let convert_temp value from_unit to_unit =
   | Fahrenheit _ -> Fahrenheit ((kelvin -. 273.15) *. (9.0 /. 5.0) +. 32.0)
   | Kelvin _ -> Kelvin kelvin
   | _ -> failwith "Target is not a temperature unit"
+
+let to_grams = function
+  | Gram v -> v
+  | Kilogram v -> v *. 1000.0
+  | Pound v -> v *. 453.592
+  | Ounce v -> v *. 28.3495
+  | _ -> failwith "Unit is not a mass unit"
+
+let from_grams v target = 
+  match target with
+  | Gram _ -> Gram v
+  | Kilogram _ -> Kilogram (v /. 1000.0)
+  | Pound _ -> Pound (v /. 453.592)
+  | Ounce _ -> Ounce (v /. 28.3495)
+  | _ -> failwith "Target is not a mass unit"
+
+let convert_mass value from_unit to_unit = 
+  let grams = to_grams (from_unit value) in
+  from_grams grams to_unit
