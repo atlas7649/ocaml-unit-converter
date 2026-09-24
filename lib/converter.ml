@@ -39,6 +39,13 @@ type energy_unit =
   | WattHour
   | KilowattHour
 
+type area_unit = 
+  | SquareMeter
+  | SquareKilometer
+  | SquareFoot
+  | Acre
+  | Hectare
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -79,6 +86,13 @@ let energy_unit_to_string = function
   | Calorie -> "calories"
   | WattHour -> "watt-hours"
   | KilowattHour -> "kilowatt-hours"
+
+let area_unit_to_string = function
+  | SquareMeter -> "square meters"
+  | SquareKilometer -> "square kilometers"
+  | SquareFoot -> "square feet"
+  | Acre -> "acres"
+  | Hectare -> "hectares"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -149,3 +163,13 @@ let to_joules = function
 
 let convert_energy value from_unit to_unit = 
   convert_linear value from_unit to_unit to_joules to_joules
+
+let to_square_meters = function
+  | SquareMeter -> 1.0
+  | SquareKilometer -> 1000000.0
+  | SquareFoot -> 0.092903
+  | Acre -> 4046.86
+  | Hectare -> 10000.0
+
+let convert_area value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_square_meters to_square_meters

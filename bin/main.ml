@@ -52,3 +52,11 @@ let () =
   let energy_val2 = 1000.0 in
   let energy_res2 = convert_energy energy_val2 Calorie WattHour in
   print_conv energy_val2 Calorie WattHour energy_res2 energy_unit_to_string
+
+  let area_val = 1.0 in
+  let area_res = convert_area area_val Acre SquareMeter in
+  print_conv area_val Acre SquareMeter area_res area_unit_to_string
+
+  let area_val2 = 100.0 in
+  let area_res2 = convert_area area_val2 SquareFoot SquareMeter in
+  print_conv area_val2 SquareFoot SquareMeter area_res2 area_unit_to_string
