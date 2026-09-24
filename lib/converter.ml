@@ -1,63 +1,63 @@
-type unit = 
-  | Meter of float
-  | Kilometer of float
-  | Foot of float
-  | Mile of float
-  | Celsius of float
-  | Fahrenheit of float
-  | Kelvin of float
-  | Gram of float
-  | Kilogram of float
-  | Pound of float
-  | Ounce of float
+type length_unit = 
+  | Meter
+  | Kilometer
+  | Foot
+  | Mile
+
+type temp_unit = 
+  | Celsius
+  | Fahrenheit
+  | Kelvin
+
+type mass_unit = 
+  | Gram
+  | Kilogram
+  | Pound
+  | Ounce
 
 let to_meters = function
-  | Meter v -> v
-  | Kilometer v -> v *. 1000.0
-  | Foot v -> v *. 0.3048
-  | Mile v -> v *. 1609.34
-  | _ -> failwith "Unit is not a length unit"
+  | Meter -> 1.0
+  | Kilometer -> 1000.0
+  | Foot -> 0.3048
+  | Mile -> 1609.34
 
 let from_meters v target = 
   match target with
-  | Meter _ -> Meter v
-  | Kilometer _ -> Kilometer (v /. 1000.0)
-  | Foot _ -> Foot (v /. 0.3048)
-  | Mile _ -> Mile (v /. 1609.34)
-  | _ -> failwith "Target is not a length unit"
+  | Meter -> Meter, v
+  | Kilometer -> Kilometer, (v /. 1000.0)
+  | Foot -> Foot, (v /. 0.3048)
+  | Mile -> Mile, (v /. 1609.34)
 
 let convert_length value from_unit to_unit = 
-  let meters = to_meters (from_unit value) in
-  from_meters meters to_unit
+  let meters = value *. (to_meters from_unit) in
+  let (unit, result) = from_meters meters to_unit in
+  result
 
 let convert_temp value from_unit to_unit = 
   let kelvin = match from_unit with
-    | Celsius _ -> value +. 273.15
-    | Fahrenheit _ -> (value -. 32.0) *. (5.0 /. 9.0) +. 273.15
-    | Kelvin _ -> value
-    | _ -> failwith "Not a temperature unit"
+    | Celsius -> value +. 273.15
+    | Fahrenheit -> (value -. 32.0) *. (5.0 /. 9.0) +. 273.15
+    | Kelvin -> value
   in
   match to_unit with
-  | Celsius _ -> Celsius (kelvin -. 273.15)
-  | Fahrenheit _ -> Fahrenheit ((kelvin -. 273.15) *. (9.0 /. 5.0) +. 32.0)
-  | Kelvin _ -> Kelvin kelvin
-  | _ -> failwith "Target is not a temperature unit"
+  | Celsius -> kelvin -. 273.15
+  | Fahrenheit -> (kelvin -. 273.15) *. (9.0 /. 5.0) +. 32.0
+  | Kelvin -> kelvin
 
 let to_grams = function
-  | Gram v -> v
-  | Kilogram v -> v *. 1000.0
-  | Pound v -> v *. 453.592
-  | Ounce v -> v *. 28.3495
-  | _ -> failwith "Unit is not a mass unit"
+  | Gram -> 1.0
+  | Kilogram -> 1000.0
+  | Pound -> 453.592
+  | Ounce -> 28.3495
 
 let from_grams v target = 
   match target with
-  | Gram _ -> Gram v
-  | Kilogram _ -> Kilogram (v /. 1000.0)
-  | Pound _ -> Pound (v /. 453.592)
-  | Ounce _ -> Ounce (v /. 28.3495)
-  | _ -> failwith "Target is not a mass unit"
+  | Gram -> Gram, v
+  | Kilogram -> Kilogram, (v /. 1000.0)
+  | Pound -> Pound, (v /. 453.592)
+  | Ounce -> Ounce, (v /. 28.3495)
 
 let convert_mass value from_unit to_unit = 
-  let grams = to_grams (from_unit value) in
-  from_grams grams to_unit
+  let grams = value *. (to_grams from_unit) in
+  let (_, result) = from_grams grams to_unit in
+  result
