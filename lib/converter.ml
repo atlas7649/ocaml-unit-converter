@@ -15,6 +15,12 @@ type mass_unit =
   | Pound
   | Ounce
 
+type volume_unit = 
+  | Liter
+  | Milliliter
+  | Gallon
+  | Cup
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -31,6 +37,12 @@ let mass_unit_to_string = function
   | Kilogram -> "kilograms"
   | Pound -> "pounds"
   | Ounce -> "ounces"
+
+let volume_unit_to_string = function
+  | Liter -> "liters"
+  | Milliliter -> "milliliters"
+  | Gallon -> "gallons"
+  | Cup -> "cups"
 
 let to_meters = function
   | Meter -> 1.0
@@ -77,4 +89,22 @@ let from_grams v target =
 let convert_mass value from_unit to_unit = 
   let grams = value *. (to_grams from_unit) in
   let (_, result) = from_grams grams to_unit in
+  result
+
+let to_liters = function
+  | Liter -> 1.0
+  | Milliliter -> 0.001
+  | Gallon -> 3.78541
+  | Cup -> 0.236588
+
+let from_liters v target = 
+  match target with
+  | Liter -> Liter, v
+  | Milliliter -> Milliliter, (v /. 0.001)
+  | Gallon -> Gallon, (v /. 3.78541)
+  | Cup -> Cup, (v /. 0.236588)
+
+let convert_volume value from_unit to_unit = 
+  let liters = value *. (to_liters from_unit) in
+  let (_, result) = from_liters liters to_unit in
   result

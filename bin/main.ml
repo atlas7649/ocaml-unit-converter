@@ -20,3 +20,11 @@ let () =
   let mass_val2 = 500.0 in
   let mass_res2 = convert_mass mass_val2 Gram Ounce in
   print_conv mass_val2 Gram Ounce mass_res2 mass_unit_to_string
+
+  let vol_val = 2.0 in
+  let vol_res = convert_volume vol_val Gallon Liter in
+  print_conv vol_val Gallon Liter vol_res volume_unit_to_string
+
+  let vol_val2 = 500.0 in
+  let vol_res2 = convert_volume vol_val2 Milliliter Cup in
+  print_conv vol_val2 Milliliter Cup vol_res2 volume_unit_to_string
