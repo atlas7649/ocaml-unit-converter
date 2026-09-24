@@ -27,6 +27,12 @@ type pressure_unit =
   | PSI
   | Atmosphere
 
+type time_unit = 
+  | Second
+  | Minute
+  | Hour
+  | Day
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -55,6 +61,12 @@ let pressure_unit_to_string = function
   | Bar -> "bars"
   | PSI -> "psi"
   | Atmosphere -> "atmospheres"
+
+let time_unit_to_string = function
+  | Second -> "seconds"
+  | Minute -> "minutes"
+  | Hour -> "hours"
+  | Day -> "days"
 
 let to_meters = function
   | Meter -> 1.0
@@ -137,4 +149,22 @@ let from_pascals v target =
 let convert_pressure value from_unit to_unit = 
   let pascals = value *. (to_pascals from_unit) in
   let (_, result) = from_pascals pascals to_unit in
+  result
+
+let to_seconds = function
+  | Second -> 1.0
+  | Minute -> 60.0
+  | Hour -> 3600.0
+  | Day -> 86400.0
+
+let from_seconds v target = 
+  match target with
+  | Second -> Second, v
+  | Minute -> Minute, (v /. 60.0)
+  | Hour -> Hour, (v /. 3600.0)
+  | Day -> Day, (v /. 86400.0)
+
+let convert_time value from_unit to_unit = 
+  let seconds = value *. (to_seconds from_unit) in
+  let (_, result) = from_seconds seconds to_unit in
   result

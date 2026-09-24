@@ -36,3 +36,11 @@ let () =
   let press_val2 = 101325.0 in
   let press_res2 = convert_pressure press_val2 Pascal Bar in
   print_conv press_val2 Pascal Bar press_res2 pressure_unit_to_string
+
+  let time_val = 1.0 in
+  let time_res = convert_time time_val Day Second in
+  print_conv time_val Day Second time_res time_unit_to_string
+
+  let time_val2 = 120.0 in
+  let time_res2 = convert_time time_val2 Minute Hour in
+  print_conv time_val2 Minute Hour time_res2 time_unit_to_string
