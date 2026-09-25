@@ -52,6 +52,13 @@ type speed_unit =
   | MilesPerHour
   | Knot
 
+type storage_unit = 
+  | Byte
+  | Kilobyte
+  | Megabyte
+  | Gigabyte
+  | Terabyte
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -105,6 +112,13 @@ let speed_unit_to_string = function
   | KilometersPerHour -> "km/h"
   | MilesPerHour -> "mph"
   | Knot -> "knots"
+
+let storage_unit_to_string = function
+  | Byte -> "bytes"
+  | Kilobyte -> "kilobytes"
+  | Megabyte -> "megabytes"
+  | Gigabyte -> "gigabytes"
+  | Terabyte -> "terabytes"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -194,3 +208,13 @@ let to_meters_per_second = function
 
 let convert_speed value from_unit to_unit = 
   convert_linear value from_unit to_unit to_meters_per_second to_meters_per_second
+
+let to_bytes = function
+  | Byte -> 1.0
+  | Kilobyte -> 1024.0
+  | Megabyte -> 1048576.0
+  | Gigabyte -> 1073741824.0
+  | Terabyte -> 1099511627776.0
+
+let convert_storage value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_bytes to_bytes

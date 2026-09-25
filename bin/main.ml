@@ -68,3 +68,11 @@ let () =
   let speed_val2 = 20.0 in
   let speed_res2 = convert_speed speed_val2 Knot MetersPerSecond in
   print_conv speed_val2 Knot MetersPerSecond speed_res2 speed_unit_to_string
+
+  let stor_val = 1.0 in
+  let stor_res = convert_storage stor_val Gigabyte Megabyte in
+  print_conv stor_val Gigabyte Megabyte stor_res storage_unit_to_string
+
+  let stor_val2 = 1024.0 in
+  let stor_res2 = convert_storage stor_val2 Kilobyte Byte in
+  print_conv stor_val2 Kilobyte Byte stor_res2 storage_unit_to_string
