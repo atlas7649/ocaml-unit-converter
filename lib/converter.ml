@@ -59,6 +59,11 @@ type storage_unit =
   | Gigabyte
   | Terabyte
 
+type angle_unit = 
+  | Degree
+  | Radian
+  | Gradian
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -119,6 +124,11 @@ let storage_unit_to_string = function
   | Megabyte -> "megabytes"
   | Gigabyte -> "gigabytes"
   | Terabyte -> "terabytes"
+
+let angle_unit_to_string = function
+  | Degree -> "degrees"
+  | Radian -> "radians"
+  | Gradian -> "gradians"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -218,3 +228,11 @@ let to_bytes = function
 
 let convert_storage value from_unit to_unit = 
   convert_linear value from_unit to_unit to_bytes to_bytes
+
+let to_radians = function
+  | Radian -> 1.0
+  | Degree -> 3.141592653589793 /. 180.0
+  | Gradian -> 3.141592653589793 /. 200.0
+
+let convert_angle value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_radians to_radians

@@ -76,3 +76,11 @@ let () =
   let stor_val2 = 1024.0 in
   let stor_res2 = convert_storage stor_val2 Kilobyte Byte in
   print_conv stor_val2 Kilobyte Byte stor_res2 storage_unit_to_string
+
+  let angle_val = 180.0 in
+  let angle_res = convert_angle angle_val Degree Radian in
+  print_conv angle_val Degree Radian angle_res angle_unit_to_string
+
+  let angle_val2 = 1.0 in
+  let angle_res2 = convert_angle angle_val2 Radian Gradian in
+  print_conv angle_val2 Radian Gradian angle_res2 angle_unit_to_string
