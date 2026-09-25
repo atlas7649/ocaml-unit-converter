@@ -60,3 +60,11 @@ let () =
   let area_val2 = 100.0 in
   let area_res2 = convert_area area_val2 SquareFoot SquareMeter in
   print_conv area_val2 SquareFoot SquareMeter area_res2 area_unit_to_string
+
+  let speed_val = 100.0 in
+  let speed_res = convert_speed speed_val KilometersPerHour MilesPerHour in
+  print_conv speed_val KilometersPerHour MilesPerHour speed_res speed_unit_to_string
+
+  let speed_val2 = 20.0 in
+  let speed_res2 = convert_speed speed_val2 Knot MetersPerSecond in
+  print_conv speed_val2 Knot MetersPerSecond speed_res2 speed_unit_to_string

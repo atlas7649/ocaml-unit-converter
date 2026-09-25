@@ -46,6 +46,12 @@ type area_unit =
   | Acre
   | Hectare
 
+type speed_unit = 
+  | MetersPerSecond
+  | KilometersPerHour
+  | MilesPerHour
+  | Knot
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -93,6 +99,12 @@ let area_unit_to_string = function
   | SquareFoot -> "square feet"
   | Acre -> "acres"
   | Hectare -> "hectares"
+
+let speed_unit_to_string = function
+  | MetersPerSecond -> "m/s"
+  | KilometersPerHour -> "km/h"
+  | MilesPerHour -> "mph"
+  | Knot -> "knots"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -173,3 +185,12 @@ let to_square_meters = function
 
 let convert_area value from_unit to_unit = 
   convert_linear value from_unit to_unit to_square_meters to_square_meters
+
+let to_meters_per_second = function
+  | MetersPerSecond -> 1.0
+  | KilometersPerHour -> 1.0 /. 3.6
+  | MilesPerHour -> 0.44704
+  | Knot -> 0.514444
+
+let convert_speed value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_meters_per_second to_meters_per_second
