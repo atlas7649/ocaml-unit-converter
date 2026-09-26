@@ -84,3 +84,11 @@ let () =
   let angle_val2 = 1.0 in
   let angle_res2 = convert_angle angle_val2 Radian Gradian in
   print_conv angle_val2 Radian Gradian angle_res2 angle_unit_to_string
+
+  let freq_val = 2.4 in
+  let freq_res = convert_frequency freq_val Gigahertz Megahertz in
+  print_conv freq_val Gigahertz Megahertz freq_res frequency_unit_to_string
+
+  let freq_val2 = 100.0 in
+  let freq_res2 = convert_frequency freq_val2 Kilohertz Hertz in
+  print_conv freq_val2 Kilohertz Hertz freq_res2 frequency_unit_to_string

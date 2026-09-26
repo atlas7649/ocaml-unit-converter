@@ -64,6 +64,12 @@ type angle_unit =
   | Radian
   | Gradian
 
+type frequency_unit = 
+  | Hertz
+  | Kilohertz
+  | Megahertz
+  | Gigahertz
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -129,6 +135,12 @@ let angle_unit_to_string = function
   | Degree -> "degrees"
   | Radian -> "radians"
   | Gradian -> "gradians"
+
+let frequency_unit_to_string = function
+  | Hertz -> "hertz"
+  | Kilohertz -> "kilohertz"
+  | Megahertz -> "megahertz"
+  | Gigahertz -> "gigahertz"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -236,3 +248,12 @@ let to_radians = function
 
 let convert_angle value from_unit to_unit = 
   convert_linear value from_unit to_unit to_radians to_radians
+
+let to_hertz = function
+  | Hertz -> 1.0
+  | Kilohertz -> 1000.0
+  | Megahertz -> 1000000.0
+  | Gigahertz -> 1000000000.0
+
+let convert_frequency value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_hertz to_hertz
