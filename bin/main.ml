@@ -100,3 +100,11 @@ let () =
   let force_val2 = 1.0 in
   let force_res2 = convert_force force_val2 KilogramForce Newton in
   print_conv force_val2 KilogramForce Newton force_res2 force_unit_to_string
+
+  let fuel_val = 8.0 in
+  let fuel_res = convert_fuel fuel_val LitersPer100km MilesPerGallonUS in
+  print_conv fuel_val LitersPer100km MilesPerGallonUS fuel_res fuel_unit_to_string
+
+  let fuel_val2 = 30.0 in
+  let fuel_res2 = convert_fuel fuel_val2 MilesPerGallonUS LitersPer100km in
+  print_conv fuel_val2 MilesPerGallonUS LitersPer100km fuel_res2 fuel_unit_to_string

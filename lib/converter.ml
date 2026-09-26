@@ -75,6 +75,11 @@ type force_unit =
   | PoundForce
   | KilogramForce
 
+type fuel_unit = 
+  | LitersPer100km
+  | MilesPerGallonUS
+  | MilesPerGallonUK
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -151,6 +156,11 @@ let force_unit_to_string = function
   | Newton -> "newtons"
   | PoundForce -> "pound-force"
   | KilogramForce -> "kilogram-force"
+
+let fuel_unit_to_string = function
+  | LitersPer100km -> "L/100km"
+  | MilesPerGallonUS -> "US mpg"
+  | MilesPerGallonUK -> "UK mpg"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -275,3 +285,14 @@ let to_newtons = function
 
 let convert_force value from_unit to_unit = 
   convert_linear value from_unit to_unit to_newtons to_newtons
+
+let convert_fuel value from_unit to_unit = 
+  let l_per_100km = match from_unit with
+    | LitersPer100km -> value
+    | MilesPerGallonUS -> 235.215 /. value
+    | MilesPerGallonUK -> 282.481 /. value
+  in
+  match to_unit with
+  | LitersPer100km -> l_per_100km
+  | MilesPerGallonUS -> 235.215 /. l_per_100km
+  | MilesPerGallonUK -> 282.481 /. l_per_100km
