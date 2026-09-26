@@ -70,6 +70,11 @@ type frequency_unit =
   | Megahertz
   | Gigahertz
 
+type force_unit = 
+  | Newton
+  | PoundForce
+  | KilogramForce
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -141,6 +146,11 @@ let frequency_unit_to_string = function
   | Kilohertz -> "kilohertz"
   | Megahertz -> "megahertz"
   | Gigahertz -> "gigahertz"
+
+let force_unit_to_string = function
+  | Newton -> "newtons"
+  | PoundForce -> "pound-force"
+  | KilogramForce -> "kilogram-force"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -257,3 +267,11 @@ let to_hertz = function
 
 let convert_frequency value from_unit to_unit = 
   convert_linear value from_unit to_unit to_hertz to_hertz
+
+let to_newtons = function
+  | Newton -> 1.0
+  | PoundForce -> 4.44822
+  | KilogramForce -> 9.80665
+
+let convert_force value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_newtons to_newtons

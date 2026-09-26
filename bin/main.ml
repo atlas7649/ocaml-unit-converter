@@ -92,3 +92,11 @@ let () =
   let freq_val2 = 100.0 in
   let freq_res2 = convert_frequency freq_val2 Kilohertz Hertz in
   print_conv freq_val2 Kilohertz Hertz freq_res2 frequency_unit_to_string
+
+  let force_val = 10.0 in
+  let force_res = convert_force force_val Newton PoundForce in
+  print_conv force_val Newton PoundForce force_res force_unit_to_string
+
+  let force_val2 = 1.0 in
+  let force_res2 = convert_force force_val2 KilogramForce Newton in
+  print_conv force_val2 KilogramForce Newton force_res2 force_unit_to_string
