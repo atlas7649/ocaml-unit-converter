@@ -80,6 +80,12 @@ type fuel_unit =
   | MilesPerGallonUS
   | MilesPerGallonUK
 
+type currency_unit = 
+  | USD
+  | EUR
+  | GBP
+  | JPY
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -161,6 +167,12 @@ let fuel_unit_to_string = function
   | LitersPer100km -> "L/100km"
   | MilesPerGallonUS -> "US mpg"
   | MilesPerGallonUK -> "UK mpg"
+
+let currency_unit_to_string = function
+  | USD -> "USD"
+  | EUR -> "EUR"
+  | GBP -> "GBP"
+  | JPY -> "JPY"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -296,3 +308,12 @@ let convert_fuel value from_unit to_unit =
   | LitersPer100km -> l_per_100km
   | MilesPerGallonUS -> 235.215 /. l_per_100km
   | MilesPerGallonUK -> 282.481 /. l_per_100km
+
+let to_usd = function
+  | USD -> 1.0
+  | EUR -> 1.08
+  | GBP -> 1.27
+  | JPY -> 0.0067
+
+let convert_currency value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_usd to_usd

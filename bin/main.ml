@@ -108,3 +108,11 @@ let () =
   let fuel_val2 = 30.0 in
   let fuel_res2 = convert_fuel fuel_val2 MilesPerGallonUS LitersPer100km in
   print_conv fuel_val2 MilesPerGallonUS LitersPer100km fuel_res2 fuel_unit_to_string
+
+  let curr_val = 100.0 in
+  let curr_res = convert_currency curr_val EUR USD in
+  print_conv curr_val EUR USD curr_res currency_unit_to_string
+
+  let curr_val2 = 1000.0 in
+  let curr_res2 = convert_currency curr_val2 JPY GBP in
+  print_conv curr_val2 JPY GBP curr_res2 currency_unit_to_string
