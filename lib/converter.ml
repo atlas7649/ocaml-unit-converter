@@ -86,6 +86,16 @@ type currency_unit =
   | GBP
   | JPY
 
+type transfer_rate_unit = 
+  | BitsPerSecond
+  | KilobitsPerSecond
+  | MegabitsPerSecond
+  | GigabitsPerSecond
+  | BytesPerSecond
+  | KilobytesPerSecond
+  | MegabytesPerSecond
+  | GigabytesPerSecond
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -165,7 +175,7 @@ let force_unit_to_string = function
 
 let fuel_unit_to_string = function
   | LitersPer100km -> "L/100km"
-  | MilesPerGallonUS -> "US mpg"
+  | milesPerGallonUS -> "US mpg"
   | MilesPerGallonUK -> "UK mpg"
 
 let currency_unit_to_string = function
@@ -173,6 +183,16 @@ let currency_unit_to_string = function
   | EUR -> "EUR"
   | GBP -> "GBP"
   | JPY -> "JPY"
+
+let transfer_rate_unit_to_string = function
+  | BitsPerSecond -> "bps"
+  | KilobitsPerSecond -> "kbps"
+  | MegabitsPerSecond -> "Mbps"
+  | GigabitsPerSecond -> "Gbps"
+  | BytesPerSecond -> "B/s"
+  | KilobytesPerSecond -> "KB/s"
+  | MegabytesPerSecond -> "MB/s"
+  | GigabytesPerSecond -> "GB/s"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -317,3 +337,16 @@ let to_usd = function
 
 let convert_currency value from_unit to_unit = 
   convert_linear value from_unit to_unit to_usd to_usd
+
+let to_bits_per_second = function
+  | BitsPerSecond -> 1.0
+  | KilobitsPerSecond -> 1000.0
+  | MegabitsPerSecond -> 1000000.0
+  | GigabitsPerSecond -> 1000000000.0
+  | BytesPerSecond -> 8.0
+  | KilobytesPerSecond -> 8000.0
+  | MegabytesPerSecond -> 8000000.0
+  | GigabytesPerSecond -> 8000000000.0
+
+let convert_transfer_rate value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_bits_per_second to_bits_per_second

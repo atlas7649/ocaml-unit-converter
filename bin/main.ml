@@ -116,3 +116,11 @@ let () =
   let curr_val2 = 1000.0 in
   let curr_res2 = convert_currency curr_val2 JPY GBP in
   print_conv curr_val2 JPY GBP curr_res2 currency_unit_to_string
+
+  let rate_val = 100.0 in
+  let rate_res = convert_transfer_rate rate_val MegabitsPerSecond MegabytesPerSecond in
+  print_conv rate_val MegabitsPerSecond MegabytesPerSecond rate_res transfer_rate_unit_to_string
+
+  let rate_val2 = 1.0 in
+  let rate_res2 = convert_transfer_rate rate_val2 GigabitsPerSecond MegabitsPerSecond in
+  print_conv rate_val2 GigabitsPerSecond MegabitsPerSecond rate_res2 transfer_rate_unit_to_string
