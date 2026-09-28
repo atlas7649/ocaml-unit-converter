@@ -96,6 +96,10 @@ type transfer_rate_unit =
   | MegabytesPerSecond
   | GigabytesPerSecond
 
+type illuminance_unit = 
+  | Lux
+  | FootCandle
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -175,7 +179,7 @@ let force_unit_to_string = function
 
 let fuel_unit_to_string = function
   | LitersPer100km -> "L/100km"
-  | milesPerGallonUS -> "US mpg"
+  | MilesPerGallonUS -> "US mpg"
   | MilesPerGallonUK -> "UK mpg"
 
 let currency_unit_to_string = function
@@ -193,6 +197,10 @@ let transfer_rate_unit_to_string = function
   | KilobytesPerSecond -> "KB/s"
   | MegabytesPerSecond -> "MB/s"
   | GigabytesPerSecond -> "GB/s"
+
+let illuminance_unit_to_string = function
+  | Lux -> "lux"
+  | FootCandle -> "foot-candles"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -350,3 +358,10 @@ let to_bits_per_second = function
 
 let convert_transfer_rate value from_unit to_unit = 
   convert_linear value from_unit to_unit to_bits_per_second to_bits_per_second
+
+let to_lux = function
+  | Lux -> 1.0
+  | FootCandle -> 10.7639
+
+let convert_illuminance value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_lux to_lux

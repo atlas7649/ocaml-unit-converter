@@ -124,3 +124,7 @@ let () =
   let rate_val2 = 1.0 in
   let rate_res2 = convert_transfer_rate rate_val2 GigabitsPerSecond MegabitsPerSecond in
   print_conv rate_val2 GigabitsPerSecond MegabitsPerSecond rate_res2 transfer_rate_unit_to_string
+
+  let lum_val = 100.0 in
+  let lum_res = convert_illuminance lum_val Lux FootCandle in
+  print_conv lum_val Lux FootCandle lum_res illuminance_unit_to_string
