@@ -109,6 +109,11 @@ type viscosity_unit =
   | Poise
   | Centipoise
 
+type resistance_unit = 
+  | Ohm
+  | Kilohm
+  | Megohm
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -219,6 +224,11 @@ let viscosity_unit_to_string = function
   | PascalSecond -> "Pa·s"
   | Poise -> "poise"
   | Centipoise -> "centipoise"
+
+let resistance_unit_to_string = function
+  | Ohm -> "ohms"
+  | Kilohm -> "kilohms"
+  | Megohm -> "megohms"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -398,3 +408,11 @@ let to_pascal_seconds = function
 
 let convert_viscosity value from_unit to_unit = 
   convert_linear value from_unit to_unit to_pascal_seconds to_pascal_seconds
+
+let to_ohms = function
+  | Ohm -> 1.0
+  | Kilohm -> 1000.0
+  | Megohm -> 1000000.0
+
+let convert_resistance value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_ohms to_ohms

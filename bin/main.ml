@@ -136,3 +136,7 @@ let () =
   let visc_val = 1.0 in
   let visc_res = convert_viscosity visc_val PascalSecond Centipoise in
   print_conv visc_val PascalSecond Centipoise visc_res viscosity_unit_to_string
+
+  let res_val = 10.0 in
+  let res_res = convert_resistance res_val Kilohm Ohm in
+  print_conv res_val Kilohm Ohm res_res resistance_unit_to_string
