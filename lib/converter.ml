@@ -100,6 +100,10 @@ type illuminance_unit =
   | Lux
   | FootCandle
 
+type magnetic_flux_density_unit = 
+  | Tesla
+  | Gauss
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -201,6 +205,10 @@ let transfer_rate_unit_to_string = function
 let illuminance_unit_to_string = function
   | Lux -> "lux"
   | FootCandle -> "foot-candles"
+
+let magnetic_flux_density_unit_to_string = function
+  | Tesla -> "teslas"
+  | Gauss -> "gauss"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -365,3 +373,10 @@ let to_lux = function
 
 let convert_illuminance value from_unit to_unit = 
   convert_linear value from_unit to_unit to_lux to_lux
+
+let to_teslas = function
+  | Tesla -> 1.0
+  | Gauss -> 0.0001
+
+let convert_magnetic_flux_density value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_teslas to_teslas

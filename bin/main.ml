@@ -128,3 +128,7 @@ let () =
   let lum_val = 100.0 in
   let lum_res = convert_illuminance lum_val Lux FootCandle in
   print_conv lum_val Lux FootCandle lum_res illuminance_unit_to_string
+
+  let mag_val = 1.0 in
+  let mag_res = convert_magnetic_flux_density mag_val Tesla Gauss in
+  print_conv mag_val Tesla Gauss mag_res magnetic_flux_density_unit_to_string
