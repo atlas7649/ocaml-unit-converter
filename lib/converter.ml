@@ -104,6 +104,11 @@ type magnetic_flux_density_unit =
   | Tesla
   | Gauss
 
+type viscosity_unit = 
+  | PascalSecond
+  | Poise
+  | Centipoise
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -209,6 +214,11 @@ let illuminance_unit_to_string = function
 let magnetic_flux_density_unit_to_string = function
   | Tesla -> "teslas"
   | Gauss -> "gauss"
+
+let viscosity_unit_to_string = function
+  | PascalSecond -> "Pa·s"
+  | Poise -> "poise"
+  | Centipoise -> "centipoise"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -380,3 +390,11 @@ let to_teslas = function
 
 let convert_magnetic_flux_density value from_unit to_unit = 
   convert_linear value from_unit to_unit to_teslas to_teslas
+
+let to_pascal_seconds = function
+  | PascalSecond -> 1.0
+  | Poise -> 0.1
+  | Centipoise -> 0.001
+
+let convert_viscosity value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_pascal_seconds to_pascal_seconds

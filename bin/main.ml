@@ -132,3 +132,7 @@ let () =
   let mag_val = 1.0 in
   let mag_res = convert_magnetic_flux_density mag_val Tesla Gauss in
   print_conv mag_val Tesla Gauss mag_res magnetic_flux_density_unit_to_string
+
+  let visc_val = 1.0 in
+  let visc_res = convert_viscosity visc_val PascalSecond Centipoise in
+  print_conv visc_val PascalSecond Centipoise visc_res viscosity_unit_to_string
