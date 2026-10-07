@@ -118,6 +118,11 @@ type luminous_flux_unit =
   | Lumen
   | CandelaSteradian
 
+type power_unit = 
+  | Watt
+  | Kilowatt
+  | Horsepower
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -237,6 +242,11 @@ let resistance_unit_to_string = function
 let luminous_flux_unit_to_string = function
   | Lumen -> "lumens"
   | CandelaSteradian -> "cd·sr"
+
+let power_unit_to_string = function
+  | Watt -> "watts"
+  | Kilowatt -> "kilowatts"
+  | Horsepower -> "horsepower"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -431,3 +441,11 @@ let to_lumens = function
 
 let convert_luminous_flux value from_unit to_unit = 
   convert_linear value from_unit to_unit to_lumens to_lumens
+
+let to_watts = function
+  | Watt -> 1.0
+  | Kilowatt -> 1000.0
+  | Horsepower -> 745.7
+
+let convert_power value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_watts to_watts

@@ -144,3 +144,7 @@ let () =
   let flux_val = 500.0 in
   let flux_res = convert_luminous_flux flux_val Lumen CandelaSteradian in
   print_conv flux_val Lumen CandelaSteradian flux_res luminous_flux_unit_to_string
+
+  let power_val = 1.0 in
+  let power_res = convert_power power_val Kilowatt Horsepower in
+  print_conv power_val Kilowatt Horsepower power_res power_unit_to_string
