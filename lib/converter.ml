@@ -123,6 +123,11 @@ type power_unit =
   | Kilowatt
   | Horsepower
 
+type data_density_unit = 
+  | BitsPerSquareMeter
+  | BitsPerSquareInch
+  | BytesPerSquareMeter
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -247,6 +252,11 @@ let power_unit_to_string = function
   | Watt -> "watts"
   | Kilowatt -> "kilowatts"
   | Horsepower -> "horsepower"
+
+let data_density_unit_to_string = function
+  | BitsPerSquareMeter -> "bits/m²"
+  | BitsPerSquareInch -> "bits/in²"
+  | BytesPerSquareMeter -> "bytes/m²"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -449,3 +459,11 @@ let to_watts = function
 
 let convert_power value from_unit to_unit = 
   convert_linear value from_unit to_unit to_watts to_watts
+
+let to_bits_per_square_meter = function
+  | BitsPerSquareMeter -> 1.0
+  | BitsPerSquareInch -> 1550.003
+  | BytesPerSquareMeter -> 8.0
+
+let convert_data_density value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_bits_per_square_meter to_bits_per_square_meter

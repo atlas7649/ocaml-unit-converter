@@ -148,3 +148,7 @@ let () =
   let power_val = 1.0 in
   let power_res = convert_power power_val Kilowatt Horsepower in
   print_conv power_val Kilowatt Horsepower power_res power_unit_to_string
+
+  let dens_val = 1000.0 in
+  let dens_res = convert_data_density dens_val BitsPerSquareInch BitsPerSquareMeter in
+  print_conv dens_val BitsPerSquareInch BitsPerSquareMeter dens_res data_density_unit_to_string
