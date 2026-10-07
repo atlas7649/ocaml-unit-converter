@@ -140,3 +140,7 @@ let () =
   let res_val = 10.0 in
   let res_res = convert_resistance res_val Kilohm Ohm in
   print_conv res_val Kilohm Ohm res_res resistance_unit_to_string
+
+  let flux_val = 500.0 in
+  let flux_res = convert_luminous_flux flux_val Lumen CandelaSteradian in
+  print_conv flux_val Lumen CandelaSteradian flux_res luminous_flux_unit_to_string

@@ -114,6 +114,10 @@ type resistance_unit =
   | Kilohm
   | Megohm
 
+type luminous_flux_unit = 
+  | Lumen
+  | CandelaSteradian
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -229,6 +233,10 @@ let resistance_unit_to_string = function
   | Ohm -> "ohms"
   | Kilohm -> "kilohms"
   | Megohm -> "megohms"
+
+let luminous_flux_unit_to_string = function
+  | Lumen -> "lumens"
+  | CandelaSteradian -> "cd·sr"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -416,3 +424,10 @@ let to_ohms = function
 
 let convert_resistance value from_unit to_unit = 
   convert_linear value from_unit to_unit to_ohms to_ohms
+
+let to_lumens = function
+  | Lumen -> 1.0
+  | CandelaSteradian -> 1.0
+
+let convert_luminous_flux value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_lumens to_lumens
