@@ -58,6 +58,10 @@ type storage_unit =
   | Megabyte
   | Gigabyte
   | Terabyte
+  | Petabyte
+  | Exabyte
+  | Zettabyte
+  | Yottabyte
 
 type angle_unit = 
   | Degree
@@ -188,6 +192,10 @@ let storage_unit_to_string = function
   | Megabyte -> "megabytes"
   | Gigabyte -> "gigabytes"
   | Terabyte -> "terabytes"
+  | Petabyte -> "petabytes"
+  | Exabyte -> "exabytes"
+  | Zettabyte -> "zettabytes"
+  | Yottabyte -> "yottabytes"
 
 let angle_unit_to_string = function
   | Degree -> "degrees"
@@ -353,6 +361,10 @@ let to_bytes = function
   | Megabyte -> 1048576.0
   | Gigabyte -> 1073741824.0
   | Terabyte -> 1099511627776.0
+  | Petabyte -> 1125899906842624.0
+  | Exabyte -> 1152921504606846976.0
+  | Zettabyte -> 1180591620717411303424.0
+  | Yottabyte -> 1208925819614629174706176.0
 
 let convert_storage value from_unit to_unit = 
   convert_linear value from_unit to_unit to_bytes to_bytes
