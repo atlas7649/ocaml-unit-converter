@@ -4,160 +4,178 @@ let print_conv value from_unit to_unit result to_string_fn =
   Printf.printf "%.2f %s is %.4f %s\n" 
     value (to_string_fn from_unit) result (to_string_fn to_unit)
 
+let run_test_length () = 
+  Printf.printf "--- Length Conversions ---\n";
+  let v = 100.0 in
+  print_conv v Meter Kilometer (convert_length v Meter Kilometer) length_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 Mile Foot (convert_length v2 Mile Foot) length_unit_to_string
+
+let run_test_temp () = 
+  Printf.printf "\n--- Temperature Conversions ---\n";
+  let v = 25.0 in
+  print_conv v Celsius Fahrenheit (convert_temp v Celsius Fahrenheit) temp_unit_to_string;
+  let v2 = 300.0 in
+  print_conv v2 Kelvin Celsius (convert_temp v2 Kelvin Celsius) temp_unit_to_string
+
+let run_test_mass () = 
+  Printf.printf "\n--- Mass Conversions ---\n";
+  let v = 2.5 in
+  print_conv v Kilogram Pound (convert_mass v Kilogram Pound) mass_unit_to_string;
+  let v2 = 500.0 in
+  print_conv v2 Gram Ounce (convert_mass v2 Gram Ounce) mass_unit_to_string
+
+let run_test_volume () = 
+  Printf.printf "\n--- Volume Conversions ---\n";
+  let v = 2.0 in
+  print_conv v Gallon Liter (convert_volume v Gallon Liter) volume_unit_to_string;
+  let v2 = 500.0 in
+  print_conv v2 Milliliter Cup (convert_volume v2 Milliliter Cup) volume_unit_to_string
+
+let run_test_pressure () = 
+  Printf.printf "\n--- Pressure Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Atmosphere PSI (convert_pressure v Atmosphere PSI) pressure_unit_to_string;
+  let v2 = 101325.0 in
+  print_conv v2 Pascal Bar (convert_pressure v2 Pascal Bar) pressure_unit_to_string
+
+let run_test_time () = 
+  Printf.printf "\n--- Time Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Day Second (convert_time v Day Second) time_unit_to_string;
+  let v2 = 120.0 in
+  print_conv v2 Minute Hour (convert_time v2 Minute Hour) time_unit_to_string
+
+let run_test_energy () = 
+  Printf.printf "\n--- Energy Conversions ---\n";
+  let v = 1.0 in
+  print_conv v KilowattHour Joule (convert_energy v KilowattHour Joule) energy_unit_to_string;
+  let v2 = 1000.0 in
+  print_conv v2 Calorie WattHour (convert_energy v2 Calorie WattHour) energy_unit_to_string
+
+let run_test_area () = 
+  Printf.printf "\n--- Area Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Acre SquareMeter (convert_area v Acre SquareMeter) area_unit_to_string;
+  let v2 = 100.0 in
+  print_conv v2 SquareFoot SquareMeter (convert_area v2 SquareFoot SquareMeter) area_unit_to_string
+
+let run_test_speed () = 
+  Printf.printf "\n--- Speed Conversions ---\n";
+  let v = 100.0 in
+  print_conv v KilometersPerHour MilesPerHour (convert_speed v KilometersPerHour MilesPerHour) speed_unit_to_string;
+  let v2 = 20.0 in
+  print_conv v2 Knot MetersPerSecond (convert_speed v2 Knot MetersPerSecond) speed_unit_to_string
+
+let run_test_storage () = 
+  Printf.printf "\n--- Storage Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Gigabyte Megabyte (convert_storage v Gigabyte Megabyte) storage_unit_to_string;
+  let v2 = 1024.0 in
+  print_conv v2 Kilobyte Byte (convert_storage v2 Kilobyte Byte) storage_unit_to_string;
+  let v3 = 1.0 in
+  print_conv v3 Yottabyte Zettabyte (convert_storage v3 Yottabyte Zettabyte) storage_unit_to_string
+
+let run_test_angle () = 
+  Printf.printf "\n--- Angle Conversions ---\n";
+  let v = 180.0 in
+  print_conv v Degree Radian (convert_angle v Degree Radian) angle_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 Radian Gradian (convert_angle v2 Radian Gradian) angle_unit_to_string
+
+let run_test_freq () = 
+  Printf.printf "\n--- Frequency Conversions ---\n";
+  let v = 2.4 in
+  print_conv v Gigahertz Megahertz (convert_frequency v Gigahertz Megahertz) frequency_unit_to_string;
+  let v2 = 100.0 in
+  print_conv v2 Kilohertz Hertz (convert_frequency v2 Kilohertz Hertz) frequency_unit_to_string
+
+let run_test_force () = 
+  Printf.printf "\n--- Force Conversions ---\n";
+  let v = 10.0 in
+  print_conv v Newton PoundForce (convert_force v Newton PoundForce) force_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 KilogramForce Newton (convert_force v2 KilogramForce Newton) force_unit_to_string
+
+let run_test_fuel () = 
+  Printf.printf "\n--- Fuel Efficiency Conversions ---\n";
+  let v = 8.0 in
+  print_conv v LitersPer100km MilesPerGallonUS (convert_fuel v LitersPer100km MilesPerGallonUS) fuel_unit_to_string;
+  let v2 = 30.0 in
+  print_conv v2 MilesPerGallonUS LitersPer100km (convert_fuel v2 MilesPerGallonUS LitersPer100km) fuel_unit_to_string
+
+let run_test_currency () = 
+  Printf.printf "\n--- Currency Conversions ---\n";
+  let v = 100.0 in
+  print_conv v EUR USD (convert_currency v EUR USD) currency_unit_to_string;
+  let v2 = 1000.0 in
+  print_conv v2 JPY GBP (convert_currency v2 JPY GBP) currency_unit_to_string
+
+let run_test_rate () = 
+  Printf.printf "\n--- Transfer Rate Conversions ---\n";
+  let v = 100.0 in
+  print_conv v MegabitsPerSecond MegabytesPerSecond (convert_transfer_rate v MegabitsPerSecond MegabytesPerSecond) transfer_rate_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 GigabitsPerSecond MegabitsPerSecond (convert_transfer_rate v2 GigabitsPerSecond MegabitsPerSecond) transfer_rate_unit_to_string
+
+let run_test_lum () = 
+  Printf.printf "\n--- Illuminance Conversions ---\n";
+  let v = 100.0 in
+  print_conv v Lux FootCandle (convert_illuminance v Lux FootCandle) illuminance_unit_to_string
+
+let run_test_mag () = 
+  Printf.printf "\n--- Magnetic Flux Density Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Tesla Gauss (convert_magnetic_flux_density v Tesla Gauss) magnetic_flux_density_unit_to_string
+
+let run_test_visc () = 
+  Printf.printf "\n--- Viscosity Conversions ---\n";
+  let v = 1.0 in
+  print_conv v PascalSecond Centipoise (convert_viscosity v PascalSecond Centipoise) viscosity_unit_to_string
+
+let run_test_res () = 
+  Printf.printf "\n--- Resistance Conversions ---\n";
+  let v = 10.0 in
+  print_conv v Kilohm Ohm (convert_resistance v Kilohm Ohm) resistance_unit_to_string
+
+let run_test_flux () = 
+  Printf.printf "\n--- Luminous Flux Conversions ---\n";
+  let v = 500.0 in
+  print_conv v Lumen CandelaSteradian (convert_luminous_flux v Lumen CandelaSteradian) luminous_flux_unit_to_string
+
+let run_test_pow () = 
+  Printf.printf "\n--- Power Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Kilowatt Horsepower (convert_power v Kilowatt Horsepower) power_unit_to_string
+
+let run_test_dens () = 
+  Printf.printf "\n--- Data Density Conversions ---\n";
+  let v = 1000.0 in
+  print_conv v BitsPerSquareInch BitsPerSquareMeter (convert_data_density v BitsPerSquareInch BitsPerSquareMeter) data_density_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 BytesPerSquareMeter BitsPerSquareMeter (convert_data_density v2 BytesPerSquareMeter BitsPerSquareMeter) data_density_unit_to_string
+
 let () = 
-  let val_to_conv = 100.0 in
-  let result = convert_length val_to_conv Meter Kilometer in
-  print_conv val_to_conv Meter Kilometer result length_unit_to_string
-
-  let temp_val = 25.0 in
-  let temp_res = convert_temp temp_val Celsius Fahrenheit in
-  print_conv temp_val Celsius Fahrenheit temp_res temp_unit_to_string
-
-  let mass_val = 2.5 in
-  let mass_res = convert_mass mass_val Kilogram Pound in
-  print_conv mass_val Kilogram Pound mass_res mass_unit_to_string
-
-  let mass_val2 = 500.0 in
-  let mass_res2 = convert_mass mass_val2 Gram Ounce in
-  print_conv mass_val2 Gram Ounce mass_res2 mass_unit_to_string
-
-  let vol_val = 2.0 in
-  let vol_res = convert_volume vol_val Gallon Liter in
-  print_conv vol_val Gallon Liter vol_res volume_unit_to_string
-
-  let vol_val2 = 500.0 in
-  let vol_res2 = convert_volume vol_val2 Milliliter Cup in
-  print_conv vol_val2 Milliliter Cup vol_res2 volume_unit_to_string
-
-  let press_val = 1.0 in
-  let press_res = convert_pressure press_val Atmosphere PSI in
-  print_conv press_val Atmosphere PSI press_res pressure_unit_to_string
-
-  let press_val2 = 101325.0 in
-  let press_res2 = convert_pressure press_val2 Pascal Bar in
-  print_conv press_val2 Pascal Bar press_res2 pressure_unit_to_string
-
-  let time_val = 1.0 in
-  let time_res = convert_time time_val Day Second in
-  print_conv time_val Day Second time_res time_unit_to_string
-
-  let time_val2 = 120.0 in
-  let time_res2 = convert_time time_val2 Minute Hour in
-  print_conv time_val2 Minute Hour time_res2 time_unit_to_string
-
-  let energy_val = 1.0 in
-  let energy_res = convert_energy energy_val KilowattHour Joule in
-  print_conv energy_val KilowattHour Joule energy_res energy_unit_to_string
-
-  let energy_val2 = 1000.0 in
-  let energy_res2 = convert_energy energy_val2 Calorie WattHour in
-  print_conv energy_val2 Calorie WattHour energy_res2 energy_unit_to_string
-
-  let area_val = 1.0 in
-  let area_res = convert_area area_val Acre SquareMeter in
-  print_conv area_val Acre SquareMeter area_res area_unit_to_string
-
-  let area_val2 = 100.0 in
-  let area_res2 = convert_area area_val2 SquareFoot SquareMeter in
-  print_conv area_val2 SquareFoot SquareMeter area_res2 area_unit_to_string
-
-  let speed_val = 100.0 in
-  let speed_res = convert_speed speed_val KilometersPerHour MilesPerHour in
-  print_conv speed_val KilometersPerHour MilesPerHour speed_res speed_unit_to_string
-
-  let speed_val2 = 20.0 in
-  let speed_res2 = convert_speed speed_val2 Knot MetersPerSecond in
-  print_conv speed_val2 Knot MetersPerSecond speed_res2 speed_unit_to_string
-
-  let stor_val = 1.0 in
-  let stor_res = convert_storage stor_val Gigabyte Megabyte in
-  print_conv stor_val Gigabyte Megabyte stor_res storage_unit_to_string
-
-  let stor_val2 = 1024.0 in
-  let stor_res2 = convert_storage stor_val2 Kilobyte Byte in
-  print_conv stor_val2 Kilobyte Byte stor_res2 storage_unit_to_string
-
-  let angle_val = 180.0 in
-  let angle_res = convert_angle angle_val Degree Radian in
-  print_conv angle_val Degree Radian angle_res angle_unit_to_string
-
-  let angle_val2 = 1.0 in
-  let angle_res2 = convert_angle angle_val2 Radian Gradian in
-  print_conv angle_val2 Radian Gradian angle_res2 angle_unit_to_string
-
-  let freq_val = 2.4 in
-  let freq_res = convert_frequency freq_val Gigahertz Megahertz in
-  print_conv freq_val Gigahertz Megahertz freq_res frequency_unit_to_string
-
-  let freq_val2 = 100.0 in
-  let freq_res2 = convert_frequency freq_val2 Kilohertz Hertz in
-  print_conv freq_val2 Kilohertz Hertz freq_res2 frequency_unit_to_string
-
-  let force_val = 10.0 in
-  let force_res = convert_force force_val Newton PoundForce in
-  print_conv force_val Newton PoundForce force_res force_unit_to_string
-
-  let force_val2 = 1.0 in
-  let force_res2 = convert_force force_val2 KilogramForce Newton in
-  print_conv force_val2 KilogramForce Newton force_res2 force_unit_to_string
-
-  let fuel_val = 8.0 in
-  let fuel_res = convert_fuel fuel_val LitersPer100km MilesPerGallonUS in
-  print_conv fuel_val LitersPer100km MilesPerGallonUS fuel_res fuel_unit_to_string
-
-  let fuel_val2 = 30.0 in
-  let fuel_res2 = convert_fuel fuel_val2 MilesPerGallonUS LitersPer100km in
-  print_conv fuel_val2 MilesPerGallonUS LitersPer100km fuel_res2 fuel_unit_to_string
-
-  let curr_val = 100.0 in
-  let curr_res = convert_currency curr_val EUR USD in
-  print_conv curr_val EUR USD curr_res currency_unit_to_string
-
-  let curr_val2 = 1000.0 in
-  let curr_res2 = convert_currency curr_val2 JPY GBP in
-  print_conv curr_val2 JPY GBP curr_res2 currency_unit_to_string
-
-  let rate_val = 100.0 in
-  let rate_res = convert_transfer_rate rate_val MegabitsPerSecond MegabytesPerSecond in
-  print_conv rate_val MegabitsPerSecond MegabytesPerSecond rate_res transfer_rate_unit_to_string
-
-  let rate_val2 = 1.0 in
-  let rate_res2 = convert_transfer_rate rate_val2 GigabitsPerSecond MegabitsPerSecond in
-  print_conv rate_val2 GigabitsPerSecond MegabitsPerSecond rate_res2 transfer_rate_unit_to_string
-
-  let lum_val = 100.0 in
-  let lum_res = convert_illuminance lum_val Lux FootCandle in
-  print_conv lum_val Lux FootCandle lum_res illuminance_unit_to_string
-
-  let mag_val = 1.0 in
-  let mag_res = convert_magnetic_flux_density mag_val Tesla Gauss in
-  print_conv mag_val Tesla Gauss mag_res magnetic_flux_density_unit_to_string
-
-  let visc_val = 1.0 in
-  let visc_res = convert_viscosity visc_val PascalSecond Centipoise in
-  print_conv visc_val PascalSecond Centipoise visc_res viscosity_unit_to_string
-
-  let res_val = 10.0 in
-  let res_res = convert_resistance res_val Kilohm Ohm in
-  print_conv res_val Kilohm Ohm res_res resistance_unit_to_string
-
-  let flux_val = 500.0 in
-  let flux_res = convert_luminous_flux flux_val Lumen CandelaSteradian in
-  print_conv flux_val Lumen CandelaSteradian flux_res luminous_flux_unit_to_string
-
-  let power_val = 1.0 in
-  let power_res = convert_power power_val Kilowatt Horsepower in
-  print_conv power_val Kilowatt Horsepower power_res power_unit_to_string
-
-  let dens_val = 1000.0 in
-  let dens_res = convert_data_density dens_val BitsPerSquareInch BitsPerSquareMeter in
-  print_conv dens_val BitsPerSquareInch BitsPerSquareMeter dens_res data_density_unit_to_string
-
-  (* Additional checks for newer units *)
-  let stor_val3 = 1.0 in
-  let stor_res3 = convert_storage stor_val3 Yottabyte Zettabyte in
-  print_conv stor_val3 Yottabyte Zettabyte stor_res3 storage_unit_to_string
-
-  let dens_val2 = 1.0 in
-  let dens_res2 = convert_data_density dens_val2 BytesPerSquareMeter BitsPerSquareMeter in
-  print_conv dens_val2 BytesPerSquareMeter BitsPerSquareMeter dens_res2 data_density_unit_to_string
+  run_test_length ();
+  run_test_temp ();
+  run_test_mass ();
+  run_test_volume ();
+  run_test_pressure ();
+  run_test_time ();
+  run_test_energy ();
+  run_test_area ();
+  run_test_speed ();
+  run_test_storage ();
+  run_test_angle ();
+  run_test_freq ();
+  run_test_force ();
+  run_test_fuel ();
+  run_test_currency ();
+  run_test_rate ();
+  run_test_lum ();
+  run_test_mag ();
+  run_test_visc ();
+  run_test_res ();
+  run_test_flux ();
+  run_test_pow ();
+  run_test_dens ();
