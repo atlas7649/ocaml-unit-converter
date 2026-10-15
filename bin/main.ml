@@ -37,7 +37,9 @@ let run_test_pressure () =
   let v = 1.0 in
   print_conv v Atmosphere PSI (convert_pressure v Atmosphere PSI) pressure_unit_to_string;
   let v2 = 101325.0 in
-  print_conv v2 Pascal Bar (convert_pressure v2 Pascal Bar) pressure_unit_to_string
+  print_conv v2 Pascal Bar (convert_pressure v2 Pascal Bar) pressure_unit_to_string;
+  let v3 = 1013.25 in
+  print_conv v3 Millibar Atmosphere (convert_pressure v3 Millibar Atmosphere) pressure_unit_to_string
 
 let run_test_time () = 
   Printf.printf "\n--- Time Conversions ---\n";

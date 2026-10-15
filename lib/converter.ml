@@ -26,6 +26,7 @@ type pressure_unit =
   | Bar
   | PSI
   | Atmosphere
+  | Millibar
 
 type time_unit = 
   | Second
@@ -160,6 +161,7 @@ let pressure_unit_to_string = function
   | Bar -> "bars"
   | PSI -> "psi"
   | Atmosphere -> "atmospheres"
+  | Millibar -> "millibars/hPa"
 
 let time_unit_to_string = function
   | Second -> "seconds"
@@ -314,6 +316,7 @@ let to_pascals = function
   | Bar -> 100000.0
   | PSI -> 6894.76
   | Atmosphere -> 101325.0
+  | Millibar -> 100.0
 
 let convert_pressure value from_unit to_unit = 
   convert_linear value from_unit to_unit to_pascals to_pascals
