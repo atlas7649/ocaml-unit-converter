@@ -152,3 +152,12 @@ let () =
   let dens_val = 1000.0 in
   let dens_res = convert_data_density dens_val BitsPerSquareInch BitsPerSquareMeter in
   print_conv dens_val BitsPerSquareInch BitsPerSquareMeter dens_res data_density_unit_to_string
+
+  (* Additional checks for newer units *)
+  let stor_val3 = 1.0 in
+  let stor_res3 = convert_storage stor_val3 Yottabyte Zettabyte in
+  print_conv stor_val3 Yottabyte Zettabyte stor_res3 storage_unit_to_string
+
+  let dens_val2 = 1.0 in
+  let dens_res2 = convert_data_density dens_val2 BytesPerSquareMeter BitsPerSquareMeter in
+  print_conv dens_val2 BytesPerSquareMeter BitsPerSquareMeter dens_res2 data_density_unit_to_string
