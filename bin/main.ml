@@ -157,6 +157,13 @@ let run_test_dens () =
   let v2 = 1.0 in
   print_conv v2 BytesPerSquareMeter BitsPerSquareMeter (convert_data_density v2 BytesPerSquareMeter BitsPerSquareMeter) data_density_unit_to_string
 
+let run_test_torque () = 
+  Printf.printf "\n--- Torque Conversions ---\n";
+  let v = 10.0 in
+  print_conv v NewtonMeter PoundFoot (convert_torque v NewtonMeter PoundFoot) torque_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 KilogramMeter NewtonMeter (convert_torque v2 KilogramMeter NewtonMeter) torque_unit_to_string
+
 let () = 
   run_test_length ();
   run_test_temp ();
@@ -181,3 +188,4 @@ let () =
   run_test_flux ();
   run_test_pow ();
   run_test_dens ();
+  run_test_torque ();

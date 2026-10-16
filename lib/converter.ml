@@ -133,6 +133,11 @@ type data_density_unit =
   | BitsPerSquareInch
   | BytesPerSquareMeter
 
+type torque_unit = 
+  | NewtonMeter
+  | PoundFoot
+  | KilogramMeter
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -267,6 +272,11 @@ let data_density_unit_to_string = function
   | BitsPerSquareMeter -> "bits/m²"
   | BitsPerSquareInch -> "bits/in²"
   | BytesPerSquareMeter -> "bytes/m²"
+
+let torque_unit_to_string = function
+  | NewtonMeter -> "Newton-meters"
+  | PoundFoot -> "pound-feet"
+  | KilogramMeter -> "kg-m"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -482,3 +492,11 @@ let to_bits_per_square_meter = function
 
 let convert_data_density value from_unit to_unit = 
   convert_linear value from_unit to_unit to_bits_per_square_meter to_bits_per_square_meter
+
+let to_newton_meters = function
+  | NewtonMeter -> 1.0
+  | PoundFoot -> 1.35581795
+  | KilogramMeter -> 9.80665
+
+let convert_torque value from_unit to_unit = 
+  convert_linear value from_unit to_unit to_newton_meters to_newton_meters
