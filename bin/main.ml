@@ -60,7 +60,11 @@ let run_test_area () =
   let v = 1.0 in
   print_conv v Acre SquareMeter (convert_area v Acre SquareMeter) area_unit_to_string;
   let v2 = 100.0 in
-  print_conv v2 SquareFoot SquareMeter (convert_area v2 SquareFoot SquareMeter) area_unit_to_string
+  print_conv v2 SquareFoot SquareMeter (convert_area v2 SquareFoot SquareMeter) area_unit_to_string;
+  let v3 = 1.0 in
+  print_conv v3 SquareKilometer SquareMeter (convert_area v3 SquareKilometer SquareMeter) area_unit_to_string;
+  let v4 = 2.5 in
+  print_conv v4 Hectare SquareMeter (convert_area v4 Hectare SquareMeter) area_unit_to_string
 
 let run_test_speed () = 
   Printf.printf "\n--- Speed Conversions ---\n";
