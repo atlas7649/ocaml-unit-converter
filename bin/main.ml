@@ -168,6 +168,13 @@ let run_test_torque () =
   let v2 = 1.0 in
   print_conv v2 KilogramMeter NewtonMeter (convert_torque v2 KilogramMeter NewtonMeter) torque_unit_to_string
 
+let run_test_acceleration () =
+  Printf.printf "\n--- Acceleration Conversions ---\n";
+  let v = 1.0 in
+  print_conv v StandardGravity MetersPerSecondSquared (convert_acceleration v StandardGravity MetersPerSecondSquared) acceleration_unit_to_string;
+  let v2 = 100.0 in
+  print_conv v2 Gal MetersPerSecondSquared (convert_acceleration v2 Gal MetersPerSecondSquared) acceleration_unit_to_string
+
 let () = 
   run_test_length ();
   run_test_temp ();
@@ -193,3 +200,4 @@ let () =
   run_test_pow ();
   run_test_dens ();
   run_test_torque ();
+  run_test_acceleration ()

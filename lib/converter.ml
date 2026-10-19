@@ -138,6 +138,12 @@ type torque_unit =
   | PoundFoot
   | KilogramMeter
 
+type acceleration_unit =
+  | MetersPerSecondSquared
+  | FeetPerSecondSquared
+  | StandardGravity
+  | Gal
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -277,6 +283,12 @@ let torque_unit_to_string = function
   | NewtonMeter -> "Newton-meters"
   | PoundFoot -> "pound-feet"
   | KilogramMeter -> "kg-m"
+
+let acceleration_unit_to_string = function
+  | MetersPerSecondSquared -> "m/s²"
+  | FeetPerSecondSquared -> "ft/s²"
+  | StandardGravity -> "g"
+  | Gal -> "Gal"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -500,3 +512,12 @@ let to_newton_meters = function
 
 let convert_torque value from_unit to_unit = 
   convert_linear value from_unit to_unit to_newton_meters to_newton_meters
+
+let to_meters_per_second_squared = function
+  | MetersPerSecondSquared -> 1.0
+  | FeetPerSecondSquared -> 0.3048
+  | StandardGravity -> 9.80665
+  | Gal -> 0.01
+
+let convert_acceleration value from_unit to_unit =
+  convert_linear value from_unit to_unit to_meters_per_second_squared to_meters_per_second_squared
