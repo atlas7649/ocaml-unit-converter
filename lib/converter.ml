@@ -144,6 +144,12 @@ type acceleration_unit =
   | StandardGravity
   | Gal
 
+type angular_velocity_unit =
+  | RadiansPerSecond
+  | DegreesPerSecond
+  | RevolutionsPerMinute
+  | RevolutionsPerSecond
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -289,6 +295,12 @@ let acceleration_unit_to_string = function
   | FeetPerSecondSquared -> "ft/s²"
   | StandardGravity -> "g"
   | Gal -> "Gal"
+
+let angular_velocity_unit_to_string = function
+  | RadiansPerSecond -> "rad/s"
+  | DegreesPerSecond -> "deg/s"
+  | RevolutionsPerMinute -> "rpm"
+  | RevolutionsPerSecond -> "rev/s"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -521,3 +533,12 @@ let to_meters_per_second_squared = function
 
 let convert_acceleration value from_unit to_unit =
   convert_linear value from_unit to_unit to_meters_per_second_squared to_meters_per_second_squared
+
+let to_radians_per_second = function
+  | RadiansPerSecond -> 1.0
+  | DegreesPerSecond -> 3.141592653589793 /. 180.0
+  | RevolutionsPerMinute -> 2.0 *. 3.141592653589793 /. 60.0
+  | RevolutionsPerSecond -> 2.0 *. 3.141592653589793
+
+let convert_angular_velocity value from_unit to_unit =
+  convert_linear value from_unit to_unit to_radians_per_second to_radians_per_second

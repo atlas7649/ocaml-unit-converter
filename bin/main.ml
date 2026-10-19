@@ -175,6 +175,13 @@ let run_test_acceleration () =
   let v2 = 100.0 in
   print_conv v2 Gal MetersPerSecondSquared (convert_acceleration v2 Gal MetersPerSecondSquared) acceleration_unit_to_string
 
+let run_test_angular_velocity () =
+  Printf.printf "\n--- Angular Velocity Conversions ---\n";
+  let v = 1.0 in
+  print_conv v RadiansPerSecond RevolutionsPerMinute (convert_angular_velocity v RadiansPerSecond RevolutionsPerMinute) angular_velocity_unit_to_string;
+  let v2 = 1000.0 in
+  print_conv v2 RevolutionsPerMinute RadiansPerSecond (convert_angular_velocity v2 RevolutionsPerMinute RadiansPerSecond) angular_velocity_unit_to_string
+
 let () = 
   run_test_length ();
   run_test_temp ();
@@ -200,4 +207,5 @@ let () =
   run_test_pow ();
   run_test_dens ();
   run_test_torque ();
-  run_test_acceleration ()
+  run_test_acceleration ();
+  run_test_angular_velocity ()

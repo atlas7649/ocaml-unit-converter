@@ -28,6 +28,7 @@ A small, type-safe library for converting between different physical units.
 - Data density conversion (Bits/Bytes per square meter/inch)
 - Torque conversion (Newton-meters, Pound-feet, Kilogram-meters)
 - Acceleration conversion (Meters/second², Feet/second², Standard gravity, Gal)
+- Angular velocity conversion (Radians/second, Degrees/second, Revolutions/minute, Revolutions/second)
 
 ## Usage
 Use the `Converter` module to perform conversions between units.
