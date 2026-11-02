@@ -29,6 +29,7 @@ A small, type-safe library for converting between different physical units.
 - Torque conversion (Newton-meters, Pound-feet, Kilogram-meters)
 - Acceleration conversion (Meters/second², Feet/second², Standard gravity, Gal)
 - Angular velocity conversion (Radians/second, Degrees/second, Revolutions/minute, Revolutions/second)
+- Density conversion (Kilograms/Cubic Meter, Grams/Cubic Centimeter, Pounds/Cubic Foot, Pounds/US Gallon)
 
 ## Usage
 Use the `Converter` module to perform conversions between units.

@@ -182,6 +182,13 @@ let run_test_angular_velocity () =
   let v2 = 1000.0 in
   print_conv v2 RevolutionsPerMinute RadiansPerSecond (convert_angular_velocity v2 RevolutionsPerMinute RadiansPerSecond) angular_velocity_unit_to_string
 
+let run_test_density () =
+  Printf.printf "\n--- Density Conversions ---\n";
+  let v = 1.0 in
+  print_conv v GramPerCubicCentimeter KilogramPerCubicMeter (convert_density v GramPerCubicCentimeter KilogramPerCubicMeter) density_unit_to_string;
+  let v2 = 62.4 in
+  print_conv v2 PoundPerCubicFoot KilogramPerCubicMeter (convert_density v2 PoundPerCubicFoot KilogramPerCubicMeter) density_unit_to_string
+
 let () = 
   run_test_length ();
   run_test_temp ();
@@ -208,4 +215,5 @@ let () =
   run_test_dens ();
   run_test_torque ();
   run_test_acceleration ();
-  run_test_angular_velocity ()
+  run_test_angular_velocity ();
+  run_test_density ()

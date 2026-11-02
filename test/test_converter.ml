@@ -19,4 +19,5 @@ let () =
   assert_conv "torque nm->pf" 1.0 NewtonMeter PoundFoot convert_torque 0.73756;
   assert_conv "accel g->ms2" 1.0 StandardGravity MetersPerSecondSquared convert_acceleration 9.80665;
   assert_conv "angvel rpm->rads" 60.0 RevolutionsPerMinute RadiansPerSecond convert_angular_velocity 6.2831853;
+  assert_conv "density gcm3->kgm3" 1.0 GramPerCubicCentimeter KilogramPerCubicMeter convert_density 1000.0;
   print_endline "All conversion tests passed."

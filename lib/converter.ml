@@ -150,6 +150,12 @@ type angular_velocity_unit =
   | RevolutionsPerMinute
   | RevolutionsPerSecond
 
+type density_unit =
+  | KilogramPerCubicMeter
+  | GramPerCubicCentimeter
+  | PoundPerCubicFoot
+  | PoundPerUSGallon
+
 let length_unit_to_string = function
   | Meter -> "meters"
   | Kilometer -> "kilometers"
@@ -301,6 +307,12 @@ let angular_velocity_unit_to_string = function
   | DegreesPerSecond -> "deg/s"
   | RevolutionsPerMinute -> "rpm"
   | RevolutionsPerSecond -> "rev/s"
+
+let density_unit_to_string = function
+  | KilogramPerCubicMeter -> "kg/m³"
+  | GramPerCubicCentimeter -> "g/cm³"
+  | PoundPerCubicFoot -> "lb/ft³"
+  | PoundPerUSGallon -> "lb/gal"
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
@@ -542,3 +554,12 @@ let to_radians_per_second = function
 
 let convert_angular_velocity value from_unit to_unit =
   convert_linear value from_unit to_unit to_radians_per_second to_radians_per_second
+
+let to_kilograms_per_cubic_meter = function
+  | KilogramPerCubicMeter -> 1.0
+  | GramPerCubicCentimeter -> 1000.0
+  | PoundPerCubicFoot -> 16.018463
+  | PoundPerUSGallon -> 119.826427
+
+let convert_density value from_unit to_unit =
+  convert_linear value from_unit to_unit to_kilograms_per_cubic_meter to_kilograms_per_cubic_meter
