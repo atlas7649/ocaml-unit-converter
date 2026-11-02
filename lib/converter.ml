@@ -3,6 +3,7 @@ type length_unit =
   | Kilometer
   | Foot
   | Mile
+  | Yard
 
 type temp_unit = 
   | Celsius
@@ -161,6 +162,7 @@ let length_unit_to_string = function
   | Kilometer -> "kilometers"
   | Foot -> "feet"
   | Mile -> "miles"
+  | Yard -> "yards"
 
 let temp_unit_to_string = function
   | Celsius -> "Celsius"
@@ -324,6 +326,7 @@ let to_meters = function
   | Kilometer -> 1000.0
   | Foot -> 0.3048
   | Mile -> 1609.34
+  | Yard -> 0.9144
 
 let convert_length value from_unit to_unit = 
   convert_linear value from_unit to_unit to_meters to_meters
