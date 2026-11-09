@@ -11,7 +11,9 @@ let run_test_length () =
   let v2 = 1.0 in
   print_conv v2 Mile Foot (convert_length v2 Mile Foot) length_unit_to_string;
   let v3 = 10.0 in
-  print_conv v3 Yard Meter (convert_length v3 Yard Meter) length_unit_to_string
+  print_conv v3 Yard Meter (convert_length v3 Yard Meter) length_unit_to_string;
+  let v4 = 1.0 in
+  print_conv v4 NauticalMile Kilometer (convert_length v4 NauticalMile Kilometer) length_unit_to_string
 
 let run_test_temp () = 
   Printf.printf "\n--- Temperature Conversions ---\n";

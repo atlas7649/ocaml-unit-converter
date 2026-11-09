@@ -31,6 +31,7 @@ let () =
   assert_conv "density gcm3->kgm3" 1.0 GramPerCubicCentimeter KilogramPerCubicMeter convert_density 1000.0;
   assert_conv "length mi->ft" 1.0 Mile Foot convert_length 5280.0;
   assert_conv "length yd->m" 1.0 Yard Meter convert_length 0.9144;
+  assert_conv "length nm->m" 1.0 NauticalMile Meter convert_length 1852.0;
   assert_conv "temp k->c" 0.0 Kelvin Celsius convert_temp (-273.15);
   assert_conv "mass lb->g" 1.0 Pound Gram convert_mass 453.592;
   assert_conv "volume gal->ml" 1.0 Gallon Milliliter convert_volume 3785.41;
@@ -56,7 +57,7 @@ let () =
   assert_conv "angvel degs->rads" 1.0 DegreesPerSecond RadiansPerSecond convert_angular_velocity (3.141592653589793 /. 180.0);
   assert_conv "density lbft3->kgm3" 1.0 PoundPerCubicFoot KilogramPerCubicMeter convert_density 16.018463;
 
-  roundtrip "length" convert_length [Meter; Kilometer; Foot; Mile; Yard] 42.0;
+  roundtrip "length" convert_length [Meter; Kilometer; Foot; Mile; Yard; NauticalMile] 42.0;
   roundtrip "temperature" convert_temp [Celsius; Fahrenheit; Kelvin] 42.0;
   roundtrip "mass" convert_mass [Gram; Kilogram; Pound; Ounce] 42.0;
   roundtrip "volume" convert_volume [Liter; Milliliter; Gallon; Cup] 42.0;
