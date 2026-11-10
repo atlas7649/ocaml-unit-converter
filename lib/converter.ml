@@ -11,6 +11,7 @@ type temp_unit =
   | Celsius
   | Fahrenheit
   | Kelvin
+  | Rankine
 
 type mass_unit = 
   | Gram
@@ -172,6 +173,7 @@ let temp_unit_to_string = function
   | Celsius -> "Celsius"
   | Fahrenheit -> "Fahrenheit"
   | Kelvin -> "Kelvin"
+  | Rankine -> "Rankine"
 
 let mass_unit_to_string = function
   | Gram -> "grams"
@@ -342,11 +344,13 @@ let convert_temp value from_unit to_unit =
     | Celsius -> value +. 273.15
     | Fahrenheit -> (value -. 32.0) *. (5.0 /. 9.0) +. 273.15
     | Kelvin -> value
+    | Rankine -> value *. (5.0 /. 9.0)
   in
   match to_unit with
   | Celsius -> kelvin -. 273.15
   | Fahrenheit -> (kelvin -. 273.15) *. (9.0 /. 5.0) +. 32.0
   | Kelvin -> kelvin
+  | Rankine -> kelvin *. (9.0 /. 5.0)
 
 let to_grams = function
   | Gram -> 1.0

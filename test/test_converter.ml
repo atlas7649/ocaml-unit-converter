@@ -21,6 +21,7 @@ let () =
   assert_conv "mass g->kg" 1000.0 Gram Kilogram convert_mass 1.0;
   assert_conv "temp c->f" 0.0 Celsius Fahrenheit convert_temp 32.0;
   assert_conv "temp c->k" 0.0 Celsius Kelvin convert_temp 273.15;
+  assert_conv "temp r->k" 9.0 Rankine Kelvin convert_temp 5.0;
   assert_conv "volume l->ml" 1.0 Liter Milliliter convert_volume 1000.0;
   assert_conv "area m2->km2" 1000000.0 SquareMeter SquareKilometer convert_area 1.0;
   assert_conv "speed kmh->ms" 3.6 KilometersPerHour MetersPerSecond convert_speed 1.0;
@@ -59,7 +60,7 @@ let () =
   assert_conv "density lbft3->kgm3" 1.0 PoundPerCubicFoot KilogramPerCubicMeter convert_density 16.018463;
 
   roundtrip "length" convert_length [Meter; Kilometer; Foot; Mile; Yard; NauticalMile; Inch] 42.0;
-  roundtrip "temperature" convert_temp [Celsius; Fahrenheit; Kelvin] 42.0;
+  roundtrip "temperature" convert_temp [Celsius; Fahrenheit; Kelvin; Rankine] 42.0;
   roundtrip "mass" convert_mass [Gram; Kilogram; Pound; Ounce] 42.0;
   roundtrip "volume" convert_volume [Liter; Milliliter; Gallon; Cup] 42.0;
   roundtrip "pressure" convert_pressure [Pascal; Bar; PSI; Atmosphere; Millibar] 42.0;

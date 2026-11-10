@@ -4,7 +4,7 @@ A small, type-safe library for converting between different physical units.
 
 ## Features
 - Length conversion (Meters, Kilometers, Feet, Miles)
-- Temperature conversion (Celsius, Fahrenheit, Kelvin)
+- Temperature conversion (Celsius, Fahrenheit, Kelvin, Rankine)
 - Mass conversion (Grams, Kilograms, Pounds, Ounces)
 - Volume conversion (Liters, Milliliters, Gallons, Cups)
 - Pressure conversion (Pascals, Bars, PSI, Atmospheres, Millibars/hPa)

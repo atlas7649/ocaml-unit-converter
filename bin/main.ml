@@ -22,7 +22,9 @@ let run_test_temp () =
   let v = 25.0 in
   print_conv v Celsius Fahrenheit (convert_temp v Celsius Fahrenheit) temp_unit_to_string;
   let v2 = 300.0 in
-  print_conv v2 Kelvin Celsius (convert_temp v2 Kelvin Celsius) temp_unit_to_string
+  print_conv v2 Kelvin Celsius (convert_temp v2 Kelvin Celsius) temp_unit_to_string;
+  let v3 = 530.0 in
+  print_conv v3 Rankine Kelvin (convert_temp v3 Rankine Kelvin) temp_unit_to_string
 
 let run_test_mass () = 
   Printf.printf "\n--- Mass Conversions ---\n";
