@@ -55,6 +55,7 @@ let () =
   assert_conv "flux lm->cdsr" 1.0 Lumen CandelaSteradian convert_luminous_flux 1.0;
   assert_conv "power hp->w" 1.0 Horsepower Watt convert_power 745.7;
   assert_conv "data density bitsin2->bitsm2" 1.0 BitsPerSquareInch BitsPerSquareMeter convert_data_density 1550.003;
+  assert_conv "data density bytesin2->bitsm2" 1.0 BytesPerSquareInch BitsPerSquareMeter convert_data_density 12400.024;
   assert_conv "accel ftss->ms2" 1.0 FeetPerSecondSquared MetersPerSecondSquared convert_acceleration 0.3048;
   assert_conv "angvel degs->rads" 1.0 DegreesPerSecond RadiansPerSecond convert_angular_velocity (3.141592653589793 /. 180.0);
   assert_conv "density lbft3->kgm3" 1.0 PoundPerCubicFoot KilogramPerCubicMeter convert_density 16.018463;
@@ -81,7 +82,7 @@ let () =
   roundtrip "resistance" convert_resistance [Ohm; Kilohm; Megohm] 42.0;
   roundtrip "luminous flux" convert_luminous_flux [Lumen; CandelaSteradian] 42.0;
   roundtrip "power" convert_power [Watt; Kilowatt; Horsepower] 42.0;
-  roundtrip "data density" convert_data_density [BitsPerSquareMeter; BitsPerSquareInch; BytesPerSquareMeter] 42.0;
+  roundtrip "data density" convert_data_density [BitsPerSquareMeter; BitsPerSquareInch; BytesPerSquareMeter; BytesPerSquareInch] 42.0;
   roundtrip "torque" convert_torque [NewtonMeter; PoundFoot; KilogramMeter] 42.0;
   roundtrip "acceleration" convert_acceleration [MetersPerSecondSquared; FeetPerSecondSquared; StandardGravity; Gal] 42.0;
   roundtrip "angular velocity" convert_angular_velocity [RadiansPerSecond; DegreesPerSecond; RevolutionsPerMinute; RevolutionsPerSecond] 42.0;

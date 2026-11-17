@@ -136,6 +136,7 @@ type data_density_unit =
   | BitsPerSquareMeter
   | BitsPerSquareInch
   | BytesPerSquareMeter
+  | BytesPerSquareInch
 
 type torque_unit = 
   | NewtonMeter
@@ -298,6 +299,7 @@ let data_density_unit_to_string = function
   | BitsPerSquareMeter -> "bits/m²"
   | BitsPerSquareInch -> "bits/in²"
   | BytesPerSquareMeter -> "bytes/m²"
+  | BytesPerSquareInch -> "bytes/in²"
 
 let torque_unit_to_string = function
   | NewtonMeter -> "Newton-meters"
@@ -538,6 +540,7 @@ let to_bits_per_square_meter = function
   | BitsPerSquareMeter -> 1.0
   | BitsPerSquareInch -> 1550.003
   | BytesPerSquareMeter -> 8.0
+  | BytesPerSquareInch -> 1550.003 *. 8.0
 
 let convert_data_density value from_unit to_unit = 
   convert_linear value from_unit to_unit to_bits_per_square_meter to_bits_per_square_meter
