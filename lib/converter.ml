@@ -333,7 +333,7 @@ let to_meters = function
   | Meter -> 1.0
   | Kilometer -> 1000.0
   | Foot -> 0.3048
-  | Mile -> 1609.34
+  | Mile -> 1609.344
   | Yard -> 0.9144
   | NauticalMile -> 1852.0
   | Inch -> 0.0254
