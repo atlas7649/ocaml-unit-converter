@@ -3,7 +3,7 @@
 A small, type-safe library for converting between different physical units.
 
 ## Features
-- Length conversion (Meters, Kilometers, Feet, Miles)
+- Length conversion (Millimeters, Centimeters, Decimeters, Meters, Kilometers, Feet, Miles, and more)
 - Temperature conversion (Celsius, Fahrenheit, Kelvin, Rankine)
 - Mass conversion (Grams, Kilograms, Pounds, Ounces)
 - Volume conversion (Liters, Milliliters, Gallons, Cups)

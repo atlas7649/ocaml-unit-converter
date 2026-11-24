@@ -15,7 +15,17 @@ let run_test_length () =
   let v4 = 1.0 in
   print_conv v4 NauticalMile Kilometer (convert_length v4 NauticalMile Kilometer) length_unit_to_string;
   let v5 = 1.0 in
-  print_conv v5 Inch Foot (convert_length v5 Inch Foot) length_unit_to_string
+  print_conv v5 Inch Foot (convert_length v5 Inch Foot) length_unit_to_string;
+  let v6 = 1000.0 in
+  print_conv v6 Millimeter Meter (convert_length v6 Millimeter Meter) length_unit_to_string;
+  let v7 = 100.0 in
+  print_conv v7 Centimeter Meter (convert_length v7 Centimeter Meter) length_unit_to_string;
+  let v8 = 10.0 in
+  print_conv v8 Decimeter Meter (convert_length v8 Decimeter Meter) length_unit_to_string;
+  let v9 = 1000000.0 in
+  print_conv v9 Micrometer Meter (convert_length v9 Micrometer Meter) length_unit_to_string;
+  let v10 = 1000000000.0 in
+  print_conv v10 Nanometer Meter (convert_length v10 Nanometer Meter) length_unit_to_string
 
 let run_test_temp () = 
   Printf.printf "\n--- Temperature Conversions ---\n";

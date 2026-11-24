@@ -6,6 +6,11 @@ type length_unit =
   | Yard
   | NauticalMile
   | Inch
+  | Millimeter
+  | Centimeter
+  | Decimeter
+  | Micrometer
+  | Nanometer
 
 type temp_unit = 
   | Celsius
@@ -169,6 +174,11 @@ let length_unit_to_string = function
   | Yard -> "yards"
   | NauticalMile -> "nautical miles"
   | Inch -> "inches"
+  | Millimeter -> "millimeters"
+  | Centimeter -> "centimeters"
+  | Decimeter -> "decimeters"
+  | Micrometer -> "micrometers"
+  | Nanometer -> "nanometers"
 
 let temp_unit_to_string = function
   | Celsius -> "Celsius"
@@ -337,6 +347,11 @@ let to_meters = function
   | Yard -> 0.9144
   | NauticalMile -> 1852.0
   | Inch -> 0.0254
+  | Millimeter -> 0.001
+  | Centimeter -> 0.01
+  | Decimeter -> 0.1
+  | Micrometer -> 1e-6
+  | Nanometer -> 1e-9
 
 let convert_length value from_unit to_unit = 
   convert_linear value from_unit to_unit to_meters to_meters
