@@ -41,7 +41,11 @@ let () =
   assert_conv "length nanom->m" 1000000000.0 Nanometer Meter convert_length 1.0;
   assert_conv "temp k->c" 0.0 Kelvin Celsius convert_temp (-273.15);
   assert_conv "mass lb->g" 1.0 Pound Gram convert_mass 453.592;
+  assert_conv "mass mg->g" 1000.0 Milligram Gram convert_mass 1.0;
+  assert_conv "mass ug->mg" 1000.0 Microgram Milligram convert_mass 1.0;
   assert_conv "volume gal->ml" 1.0 Gallon Milliliter convert_volume 3785.41;
+  assert_conv "volume cl->l" 100.0 Centiliter Liter convert_volume 1.0;
+  assert_conv "volume ul->ml" 1000.0 Microliter Milliliter convert_volume 1.0;
   assert_conv "pressure atm->pa" 1.0 Atmosphere Pascal convert_pressure 101325.0;
   assert_conv "time day->hr" 1.0 Day Hour convert_time 24.0;
   assert_conv "energy kwh->j" 1.0 KilowattHour Joule convert_energy 3600000.0;
@@ -51,6 +55,7 @@ let () =
   assert_conv "freq ghz->mhz" 1.0 Gigahertz Megahertz convert_frequency 1000.0;
   assert_conv "force kgf->n" 1.0 KilogramForce Newton convert_force 9.80665;
   assert_conv "fuel l100->usmpg" 8.0 LitersPer100km MilesPerGallonUS convert_fuel 29.401875;
+  assert_conv "fuel l100->ukmpg" 8.0 LitersPer100km MilesPerGallonUK convert_fuel 35.310125;
   assert_conv "currency eur->usd" 100.0 EUR USD convert_currency 108.0;
   assert_conv "rate gbps->mbps" 1.0 GigabitsPerSecond MegabitsPerSecond convert_transfer_rate 1000.0;
   assert_conv "illuminance fc->lux" 1.0 FootCandle Lux convert_illuminance 10.7639;
@@ -67,8 +72,8 @@ let () =
 
   roundtrip "length" convert_length [Meter; Kilometer; Foot; Mile; Yard; NauticalMile; Inch; Millimeter; Centimeter; Decimeter; Micrometer; Nanometer] 42.0;
   roundtrip "temperature" convert_temp [Celsius; Fahrenheit; Kelvin; Rankine] 42.0;
-  roundtrip "mass" convert_mass [Gram; Kilogram; Pound; Ounce] 42.0;
-  roundtrip "volume" convert_volume [Liter; Milliliter; Gallon; Cup] 42.0;
+  roundtrip "mass" convert_mass [Gram; Kilogram; Pound; Ounce; Milligram; Centigram; Decigram; Microgram; Nanogram] 42.0;
+  roundtrip "volume" convert_volume [Liter; Milliliter; Gallon; Cup; Centiliter; Deciliter; Microliter; Nanoliter] 42.0;
   roundtrip "pressure" convert_pressure [Pascal; Bar; PSI; Atmosphere; Millibar] 42.0;
   roundtrip "time" convert_time [Second; Minute; Hour; Day] 42.0;
   roundtrip "energy" convert_energy [Joule; Calorie; WattHour; KilowattHour] 42.0;

@@ -5,8 +5,8 @@ A small, type-safe library for converting between different physical units.
 ## Features
 - Length conversion (Millimeters, Centimeters, Decimeters, Meters, Kilometers, Feet, Miles, and more)
 - Temperature conversion (Celsius, Fahrenheit, Kelvin, Rankine)
-- Mass conversion (Grams, Kilograms, Pounds, Ounces)
-- Volume conversion (Liters, Milliliters, Gallons, Cups)
+- Mass conversion (Grams, Kilograms, Milligrams, Centigrams, Decigrams, Micrograms, Nanograms, Pounds, Ounces)
+- Volume conversion (Liters, Milliliters, Centiliters, Deciliters, Microliters, Nanoliters, Gallons, Cups)
 - Pressure conversion (Pascals, Bars, PSI, Atmospheres, Millibars/hPa)
 - Time conversion (Seconds, Minutes, Hours, Days)
 - Energy conversion (Joules, Calories, Watt-hours, Kilowatt-hours)
@@ -31,5 +31,30 @@ A small, type-safe library for converting between different physical units.
 - Angular velocity conversion (Radians/second, Degrees/second, Revolutions/minute, Revolutions/second)
 - Density conversion (Kilograms/Cubic Meter, Grams/Cubic Centimeter, Pounds/Cubic Foot, Pounds/US Gallon)
 
+## Setup
+
+Build and test the project with Dune:
+
+```sh
+dune build
+dune test
+```
+
+Run the demonstration executable:
+
+```sh
+dune exec ocaml-unit-converter
+```
+
 ## Usage
+
 Use the `Converter` module to perform conversions between units.
+
+```ocaml
+open Converter
+
+let () =
+  Printf.printf "%.4f kilometers\n" (convert_length 100.0 Meter Kilometer);
+  Printf.printf "%.4f grams\n" (convert_mass 1000.0 Milligram Gram);
+  Printf.printf "%.4f liters\n" (convert_volume 100.0 Centiliter Liter)
+```

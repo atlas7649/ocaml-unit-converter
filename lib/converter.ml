@@ -23,12 +23,21 @@ type mass_unit =
   | Kilogram
   | Pound
   | Ounce
+  | Milligram
+  | Centigram
+  | Decigram
+  | Microgram
+  | Nanogram
 
 type volume_unit = 
   | Liter
   | Milliliter
   | Gallon
   | Cup
+  | Centiliter
+  | Deciliter
+  | Microliter
+  | Nanoliter
 
 type pressure_unit = 
   | Pascal
@@ -191,12 +200,21 @@ let mass_unit_to_string = function
   | Kilogram -> "kilograms"
   | Pound -> "pounds"
   | Ounce -> "ounces"
+  | Milligram -> "milligrams"
+  | Centigram -> "centigrams"
+  | Decigram -> "decigrams"
+  | Microgram -> "micrograms"
+  | Nanogram -> "nanograms"
 
 let volume_unit_to_string = function
   | Liter -> "liters"
   | Milliliter -> "milliliters"
   | Gallon -> "gallons"
   | Cup -> "cups"
+  | Centiliter -> "centiliters"
+  | Deciliter -> "deciliters"
+  | Microliter -> "microliters"
+  | Nanoliter -> "nanoliters"
 
 let pressure_unit_to_string = function
   | Pascal -> "pascals"
@@ -336,7 +354,7 @@ let density_unit_to_string = function
 
 (* Generic helper for linear conversions *)
 let convert_linear value from_unit to_unit to_base from_base = 
-  let base_val = value *. (to_base from_unit) in
+  let base_val = value *. (from_base from_unit) in
   base_val /. (to_base to_unit)
 
 let to_meters = function
@@ -374,6 +392,11 @@ let to_grams = function
   | Kilogram -> 1000.0
   | Pound -> 453.592
   | Ounce -> 28.3495
+  | Milligram -> 0.001
+  | Centigram -> 0.01
+  | Decigram -> 0.1
+  | Microgram -> 1e-6
+  | Nanogram -> 1e-9
 
 let convert_mass value from_unit to_unit = 
   convert_linear value from_unit to_unit to_grams to_grams
@@ -383,6 +406,10 @@ let to_liters = function
   | Milliliter -> 0.001
   | Gallon -> 3.78541
   | Cup -> 0.236588
+  | Centiliter -> 0.01
+  | Deciliter -> 0.1
+  | Microliter -> 1e-6
+  | Nanoliter -> 1e-9
 
 let convert_volume value from_unit to_unit = 
   convert_linear value from_unit to_unit to_liters to_liters

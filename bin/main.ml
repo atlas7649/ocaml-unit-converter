@@ -41,14 +41,22 @@ let run_test_mass () =
   let v = 2.5 in
   print_conv v Kilogram Pound (convert_mass v Kilogram Pound) mass_unit_to_string;
   let v2 = 500.0 in
-  print_conv v2 Gram Ounce (convert_mass v2 Gram Ounce) mass_unit_to_string
+  print_conv v2 Gram Ounce (convert_mass v2 Gram Ounce) mass_unit_to_string;
+  let v3 = 1000.0 in
+  print_conv v3 Milligram Gram (convert_mass v3 Milligram Gram) mass_unit_to_string;
+  let v4 = 1000.0 in
+  print_conv v4 Microgram Milligram (convert_mass v4 Microgram Milligram) mass_unit_to_string
 
 let run_test_volume () = 
   Printf.printf "\n--- Volume Conversions ---\n";
   let v = 2.0 in
   print_conv v Gallon Liter (convert_volume v Gallon Liter) volume_unit_to_string;
   let v2 = 500.0 in
-  print_conv v2 Milliliter Cup (convert_volume v2 Milliliter Cup) volume_unit_to_string
+  print_conv v2 Milliliter Cup (convert_volume v2 Milliliter Cup) volume_unit_to_string;
+  let v3 = 100.0 in
+  print_conv v3 Centiliter Liter (convert_volume v3 Centiliter Liter) volume_unit_to_string;
+  let v4 = 1000.0 in
+  print_conv v4 Microliter Milliliter (convert_volume v4 Microliter Milliliter) volume_unit_to_string
 
 let run_test_pressure () = 
   Printf.printf "\n--- Pressure Conversions ---\n";
