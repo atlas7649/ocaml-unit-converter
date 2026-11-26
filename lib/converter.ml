@@ -64,6 +64,11 @@ type area_unit =
   | SquareFoot
   | Acre
   | Hectare
+  | SquareMillimeter
+  | SquareCentimeter
+  | SquareDecimeter
+  | SquareMicrometer
+  | SquareNanometer
 
 type speed_unit = 
   | MetersPerSecond
@@ -241,6 +246,11 @@ let area_unit_to_string = function
   | SquareFoot -> "square feet"
   | Acre -> "acres"
   | Hectare -> "hectares"
+  | SquareMillimeter -> "square millimeters"
+  | SquareCentimeter -> "square centimeters"
+  | SquareDecimeter -> "square decimeters"
+  | SquareMicrometer -> "square micrometers"
+  | SquareNanometer -> "square nanometers"
 
 let speed_unit_to_string = function
   | MetersPerSecond -> "m/s"
@@ -448,6 +458,11 @@ let to_square_meters = function
   | SquareFoot -> 0.092903
   | Acre -> 4046.86
   | Hectare -> 10000.0
+  | SquareMillimeter -> 1e-6
+  | SquareCentimeter -> 1e-4
+  | SquareDecimeter -> 1e-2
+  | SquareMicrometer -> 1e-12
+  | SquareNanometer -> 1e-18
 
 let convert_area value from_unit to_unit = 
   convert_linear value from_unit to_unit to_square_meters to_square_meters

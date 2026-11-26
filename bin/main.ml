@@ -90,7 +90,17 @@ let run_test_area () =
   let v3 = 1.0 in
   print_conv v3 SquareKilometer SquareMeter (convert_area v3 SquareKilometer SquareMeter) area_unit_to_string;
   let v4 = 2.5 in
-  print_conv v4 Hectare SquareMeter (convert_area v4 Hectare SquareMeter) area_unit_to_string
+  print_conv v4 Hectare SquareMeter (convert_area v4 Hectare SquareMeter) area_unit_to_string;
+  let v5 = 1000000.0 in
+  print_conv v5 SquareMillimeter SquareMeter (convert_area v5 SquareMillimeter SquareMeter) area_unit_to_string;
+  let v6 = 10000.0 in
+  print_conv v6 SquareCentimeter SquareMeter (convert_area v6 SquareCentimeter SquareMeter) area_unit_to_string;
+  let v7 = 100.0 in
+  print_conv v7 SquareDecimeter SquareMeter (convert_area v7 SquareDecimeter SquareMeter) area_unit_to_string;
+  let v8 = 1000000000000.0 in
+  print_conv v8 SquareMicrometer SquareMeter (convert_area v8 SquareMicrometer SquareMeter) area_unit_to_string;
+  let v9 = 1000000000000000000.0 in
+  print_conv v9 SquareNanometer SquareMeter (convert_area v9 SquareNanometer SquareMeter) area_unit_to_string
 
 let run_test_speed () = 
   Printf.printf "\n--- Speed Conversions ---\n";

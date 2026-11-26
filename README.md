@@ -10,7 +10,7 @@ A small, type-safe library for converting between different physical units.
 - Pressure conversion (Pascals, Bars, PSI, Atmospheres, Millibars/hPa)
 - Time conversion (Seconds, Minutes, Hours, Days)
 - Energy conversion (Joules, Calories, Watt-hours, Kilowatt-hours)
-- Area conversion (Square Meters, Square Kilometers, Square Feet, Acres, Hectares)
+- Area conversion (Square Millimeters, Square Centimeters, Square Decimeters, Square Meters, Square Micrometers, Square Nanometers, Square Kilometers, Square Feet, Acres, Hectares)
 - Speed conversion (Meters/Second, Kilometers/Hour, Miles/Hour, Knots)
 - Storage conversion (Bytes through Yottabytes)
 - Angle conversion (Degrees, Radians, Gradians)

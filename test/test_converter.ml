@@ -24,6 +24,11 @@ let () =
   assert_conv "temp r->k" 9.0 Rankine Kelvin convert_temp 5.0;
   assert_conv "volume l->ml" 1.0 Liter Milliliter convert_volume 1000.0;
   assert_conv "area m2->km2" 1000000.0 SquareMeter SquareKilometer convert_area 1.0;
+  assert_conv "area mm2->m2" 1000000.0 SquareMillimeter SquareMeter convert_area 1.0;
+  assert_conv "area cm2->m2" 10000.0 SquareCentimeter SquareMeter convert_area 1.0;
+  assert_conv "area dm2->m2" 100.0 SquareDecimeter SquareMeter convert_area 1.0;
+  assert_conv "area um2->m2" 1000000000000.0 SquareMicrometer SquareMeter convert_area 1.0;
+  assert_conv "area nm2->m2" 1000000000000000000.0 SquareNanometer SquareMeter convert_area 1.0;
   assert_conv "speed kmh->ms" 3.6 KilometersPerHour MetersPerSecond convert_speed 1.0;
   assert_conv "angle deg->rad" 180.0 Degree Radian convert_angle 3.14159265;
   assert_conv "torque nm->pf" 1.0 NewtonMeter PoundFoot convert_torque 0.737562149;
@@ -77,7 +82,7 @@ let () =
   roundtrip "pressure" convert_pressure [Pascal; Bar; PSI; Atmosphere; Millibar] 42.0;
   roundtrip "time" convert_time [Second; Minute; Hour; Day] 42.0;
   roundtrip "energy" convert_energy [Joule; Calorie; WattHour; KilowattHour] 42.0;
-  roundtrip "area" convert_area [SquareMeter; SquareKilometer; SquareFoot; Acre; Hectare] 42.0;
+  roundtrip "area" convert_area [SquareMeter; SquareKilometer; SquareFoot; Acre; Hectare; SquareMillimeter; SquareCentimeter; SquareDecimeter; SquareMicrometer; SquareNanometer] 42.0;
   roundtrip "speed" convert_speed [MetersPerSecond; KilometersPerHour; MilesPerHour; Knot] 42.0;
   roundtrip "storage" convert_storage [Byte; Kilobyte; Megabyte; Gigabyte; Terabyte; Petabyte; Exabyte; Zettabyte; Yottabyte] 42.0;
   roundtrip "angle" convert_angle [Degree; Radian; Gradian] 42.0;
