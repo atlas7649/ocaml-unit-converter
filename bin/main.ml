@@ -236,6 +236,17 @@ let run_test_voltage () =
   let v4 = 1.0 in
   print_conv v4 Gigavolt Kilovolt (convert_voltage v4 Gigavolt Kilovolt) voltage_unit_to_string
 
+let run_test_current () =
+  Printf.printf "\n--- Current Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Ampere Milliampere (convert_current v Ampere Milliampere) current_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 Kiloampere Ampere (convert_current v2 Kiloampere Ampere) current_unit_to_string;
+  let v3 = 1.0 in
+  print_conv v3 Milliampere Microampere (convert_current v3 Milliampere Microampere) current_unit_to_string;
+  let v4 = 1.0 in
+  print_conv v4 Gigaampere Megaampere (convert_current v4 Gigaampere Megaampere) current_unit_to_string
+
 let () = 
   run_test_length ();
   run_test_temp ();
@@ -264,4 +275,5 @@ let () =
   run_test_acceleration ();
   run_test_angular_velocity ();
   run_test_density ();
-  run_test_voltage ()
+  run_test_voltage ();
+  run_test_current ()

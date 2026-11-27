@@ -78,6 +78,8 @@ let () =
   assert_conv "voltage kv->v" 1.0 Kilovolt Volt convert_voltage 1000.0;
   assert_conv "voltage mv->uv" 1.0 Millivolt Microvolt convert_voltage 1000.0;
   assert_conv "voltage gv->kv" 1.0 Gigavolt Kilovolt convert_voltage 1000.0;
+  assert_conv "current a->ma" 1.0 Ampere Milliampere convert_current 1000.0;
+  assert_conv "current ka->a" 1.0 Kiloampere Ampere convert_current 1000.0;
 
   roundtrip "length" convert_length [Meter; Kilometer; Foot; Mile; Yard; NauticalMile; Inch; Millimeter; Centimeter; Decimeter; Micrometer; Nanometer] 42.0;
   roundtrip "temperature" convert_temp [Celsius; Fahrenheit; Kelvin; Rankine] 42.0;
@@ -107,5 +109,6 @@ let () =
   roundtrip "angular velocity" convert_angular_velocity [RadiansPerSecond; DegreesPerSecond; RevolutionsPerMinute; RevolutionsPerSecond] 42.0;
   roundtrip "density" convert_density [KilogramPerCubicMeter; GramPerCubicCentimeter; PoundPerCubicFoot; PoundPerUSGallon] 42.0;
   roundtrip "voltage" convert_voltage [Volt; Millivolt; Microvolt; Nanovolt; Kilovolt; Megavolt; Gigavolt] 42.0;
+  roundtrip "current" convert_current [Ampere; Milliampere; Microampere; Nanoampere; Kiloampere; Megaampere; Gigaampere] 42.0;
 
   print_endline "All conversion tests passed."

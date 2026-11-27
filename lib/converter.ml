@@ -666,3 +666,33 @@ let to_volts = function
 
 let convert_voltage value from_unit to_unit =
   convert_linear value from_unit to_unit to_volts to_volts
+
+type current_unit =
+  | Ampere
+  | Milliampere
+  | Microampere
+  | Nanoampere
+  | Kiloampere
+  | Megaampere
+  | Gigaampere
+
+let current_unit_to_string = function
+  | Ampere -> "amperes"
+  | Milliampere -> "milliamperes"
+  | Microampere -> "microamperes"
+  | Nanoampere -> "nanoamperes"
+  | Kiloampere -> "kiloamperes"
+  | Megaampere -> "megaamperes"
+  | Gigaampere -> "gigaamperes"
+
+let to_amperes = function
+  | Ampere -> 1.0
+  | Milliampere -> 0.001
+  | Microampere -> 1e-6
+  | Nanoampere -> 1e-9
+  | Kiloampere -> 1000.0
+  | Megaampere -> 1000000.0
+  | Gigaampere -> 1000000000.0
+
+let convert_current value from_unit to_unit =
+  convert_linear value from_unit to_unit to_amperes to_amperes
