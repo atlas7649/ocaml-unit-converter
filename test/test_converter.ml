@@ -74,6 +74,10 @@ let () =
   assert_conv "accel ftss->ms2" 1.0 FeetPerSecondSquared MetersPerSecondSquared convert_acceleration 0.3048;
   assert_conv "angvel degs->rads" 1.0 DegreesPerSecond RadiansPerSecond convert_angular_velocity (3.141592653589793 /. 180.0);
   assert_conv "density lbft3->kgm3" 1.0 PoundPerCubicFoot KilogramPerCubicMeter convert_density 16.018463;
+  assert_conv "voltage v->mv" 1.0 Volt Millivolt convert_voltage 1000.0;
+  assert_conv "voltage kv->v" 1.0 Kilovolt Volt convert_voltage 1000.0;
+  assert_conv "voltage mv->uv" 1.0 Millivolt Microvolt convert_voltage 1000.0;
+  assert_conv "voltage gv->kv" 1.0 Gigavolt Kilovolt convert_voltage 1000.0;
 
   roundtrip "length" convert_length [Meter; Kilometer; Foot; Mile; Yard; NauticalMile; Inch; Millimeter; Centimeter; Decimeter; Micrometer; Nanometer] 42.0;
   roundtrip "temperature" convert_temp [Celsius; Fahrenheit; Kelvin; Rankine] 42.0;
@@ -102,5 +106,6 @@ let () =
   roundtrip "acceleration" convert_acceleration [MetersPerSecondSquared; FeetPerSecondSquared; StandardGravity; Gal] 42.0;
   roundtrip "angular velocity" convert_angular_velocity [RadiansPerSecond; DegreesPerSecond; RevolutionsPerMinute; RevolutionsPerSecond] 42.0;
   roundtrip "density" convert_density [KilogramPerCubicMeter; GramPerCubicCentimeter; PoundPerCubicFoot; PoundPerUSGallon] 42.0;
+  roundtrip "voltage" convert_voltage [Volt; Millivolt; Microvolt; Nanovolt; Kilovolt; Megavolt; Gigavolt] 42.0;
 
   print_endline "All conversion tests passed."

@@ -225,6 +225,17 @@ let run_test_density () =
   let v2 = 62.4 in
   print_conv v2 PoundPerCubicFoot KilogramPerCubicMeter (convert_density v2 PoundPerCubicFoot KilogramPerCubicMeter) density_unit_to_string
 
+let run_test_voltage () =
+  Printf.printf "\n--- Voltage Conversions ---\n";
+  let v = 1.0 in
+  print_conv v Volt Millivolt (convert_voltage v Volt Millivolt) voltage_unit_to_string;
+  let v2 = 1.0 in
+  print_conv v2 Kilovolt Volt (convert_voltage v2 Kilovolt Volt) voltage_unit_to_string;
+  let v3 = 1.0 in
+  print_conv v3 Millivolt Microvolt (convert_voltage v3 Millivolt Microvolt) voltage_unit_to_string;
+  let v4 = 1.0 in
+  print_conv v4 Gigavolt Kilovolt (convert_voltage v4 Gigavolt Kilovolt) voltage_unit_to_string
+
 let () = 
   run_test_length ();
   run_test_temp ();
@@ -252,4 +263,5 @@ let () =
   run_test_torque ();
   run_test_acceleration ();
   run_test_angular_velocity ();
-  run_test_density ()
+  run_test_density ();
+  run_test_voltage ()

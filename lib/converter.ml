@@ -636,3 +636,33 @@ let to_kilograms_per_cubic_meter = function
 
 let convert_density value from_unit to_unit =
   convert_linear value from_unit to_unit to_kilograms_per_cubic_meter to_kilograms_per_cubic_meter
+
+type voltage_unit =
+  | Volt
+  | Millivolt
+  | Microvolt
+  | Nanovolt
+  | Kilovolt
+  | Megavolt
+  | Gigavolt
+
+let voltage_unit_to_string = function
+  | Volt -> "volts"
+  | Millivolt -> "millivolts"
+  | Microvolt -> "microvolts"
+  | Nanovolt -> "nanovolts"
+  | Kilovolt -> "kilovolts"
+  | Megavolt -> "megavolts"
+  | Gigavolt -> "gigavolts"
+
+let to_volts = function
+  | Volt -> 1.0
+  | Millivolt -> 0.001
+  | Microvolt -> 1e-6
+  | Nanovolt -> 1e-9
+  | Kilovolt -> 1000.0
+  | Megavolt -> 1000000.0
+  | Gigavolt -> 1000000000.0
+
+let convert_voltage value from_unit to_unit =
+  convert_linear value from_unit to_unit to_volts to_volts
